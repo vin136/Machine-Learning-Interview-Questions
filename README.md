@@ -21,7 +21,7 @@ This are the algorithms that you should aim to know inside out. (Focus on `Depth
 
 
 # SQL
-General strategy: Once you are comfortable with the basics, take up SQL questions from stratscratch that have [video solutions](https://www.youtube.com/watch?v=GeJUvdkJKEc&list=PLv6MQO1Zzdmq5w4YkdkWyW8AaWatSQ0kX), try them by yourslef and them compare. Do them both in Python and MYSQL.
+General strategy: Once you are comfortable with the basics, take up SQL questions from stratscratch that have [video solutions](https://www.youtube.com/watch?v=GeJUvdkJKEc&list=PLv6MQO1Zzdmq5w4YkdkWyW8AaWatSQ0kX), try them by yourslef and them compare. Do them both in **Python and MYSQL.**
 
 To learn refer these two courses
 
