@@ -43,5 +43,7 @@ Focus on improving understanding, use brilliant.org
 Recommended Courses:
 1. intro to prob(10),Perplexing probability(19),knowledge and uncertainty(13)
 2. Into to stat(26), stat 1(35), rand var n dist(28)
+Above courses together have about 130 lessons. Aiming about 5 lessons a day => 1 month. Good time.
+Suggested order: Intro to prob, Intro to stat, stat 1.
 
 Extra: lin algebra with app (41),multivariable calc(44)
