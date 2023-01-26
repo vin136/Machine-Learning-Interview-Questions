@@ -11,6 +11,10 @@ General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#reso
 4. [CS 229 STANFORD](https://cs229.stanford.edu/syllabus-summer2019.html)
 5. [Emma Ding's Youtube Channel](https://www.youtube.com/@DataInterviewPro)
 
+# A week befor the interview
+
+1. Anatomy of an [ML interview](https://pub.towardsai.net/4-types-of-machine-learning-interview-questions-for-data-scientists-and-machine-learning-engineers-b8135805ce1b)
+
 
 --------
 # Basic ML Algorithms
