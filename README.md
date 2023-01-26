@@ -25,4 +25,4 @@ To learn refer these two courses
 Learsql a. Basic SQL b. Window Functions
 
 
-1. Practice SQL questions[https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular]
+1. [Practice SQL questions](https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular)
