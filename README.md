@@ -29,3 +29,4 @@ Learsql a. Basic SQL b. Window Functions
 1. Practice most commonly asked questions from [stratscratch](https://platform.stratascratch.com/coding?code_type=3)
 2. [Video walk-throughs](https://www.youtube.com/watch?v=GeJUvdkJKEc&list=PLv6MQO1Zzdmq5w4YkdkWyW8AaWatSQ0kX)
 3. [Practice SQL questions](https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular)
+4. This [educative course might be helpful](https://www.educative.io/module/JZmo10C1K3V0gqV0w/10370001/5844917766586368)
