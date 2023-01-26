@@ -1,5 +1,7 @@
-<details>
-<summary>How do I dropdown?</summary>
-<br>
-This is how you dropdown.
+<details><summary>Does work</summary>
+
+[hi](https://hello.ca)
+
+  - Hi how are you 
+
 </details>
