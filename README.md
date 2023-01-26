@@ -16,3 +16,13 @@ Here I'll collect questions and give succint answers to possible questions in a 
 This are the algorithms that you should aim to know inside out. (Focus on `Depth`)
 
 1. Decision Trees and Random Forests
+
+
+# SQL
+
+To learn refer these two courses
+
+Learsql a. Basic SQL b. Window Functions
+
+
+1. Practice SQL questions[https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular]
