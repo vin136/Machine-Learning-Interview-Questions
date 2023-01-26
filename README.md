@@ -9,5 +9,6 @@ Here I'll collect questions and give succint answers to possible questions in a 
 
 
 --------
+# Basic ML Algorithms
 
 1. Decision Trees and Random Forests
