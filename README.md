@@ -39,3 +39,9 @@ Learsql a. Basic SQL b. Window Functions
 # Statistics and Probability
 
 Focus on improving understanding, use brilliant.org
+
+Recommended Courses:
+1. intro to prob(10),Perplexing probability(19),knowledge and uncertainty(13)
+2. Into to stat(26), stat 1(35), rand var n dist(28)
+
+Extra: lin algebra with app (41),multivariable calc(44)
