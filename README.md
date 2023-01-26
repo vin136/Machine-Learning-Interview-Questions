@@ -13,4 +13,6 @@ Here I'll collect questions and give succint answers to possible questions in a 
 --------
 # Basic ML Algorithms
 
+This are the algorithms that you should aim to know inside out. (Focus on `Depth`)
+
 1. Decision Trees and Random Forests
