@@ -3,6 +3,8 @@ Here I'll collect questions and give succint answers to possible questions in a 
 
 # Useful resources
 
+General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#resourcespreparation-for-ml-ds)
+
 1. [Summary/Notes of ML/DL](https://stanford.edu/~shervine/teaching/cs-229/)
 2. [AppliedAi notes](https://github.com/raveendarv/AppliedAiCourse-AssignmentAndNotes): Useful for knowing common interview questions for each algorithm.
 3. [Great Flash cards covering ML and DL](https://github.com/b7leung/MLE-Flashcards)
@@ -24,5 +26,6 @@ To learn refer these two courses
 
 Learsql a. Basic SQL b. Window Functions
 
+1. Practice most commonly asked questions from [stratscratch](https://platform.stratascratch.com/coding?code_type=3)
 
-1. [Practice SQL questions](https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular)
+2. [Practice SQL questions](https://www.interviewquery.com/questions?searchQuery=&searchQuestionTag=&searchCompany=&ordering=Recommended&pageSize=50&page=0&tags=Pandas&tags=SQL&tags=R&tags=Database+Design&extraFilters=Popular)
