@@ -23,7 +23,7 @@ This are the algorithms that you should aim to know inside out. (Focus on `Depth
 
 1. Decision Trees and Random Forests
 
-Used [Resources](https://github.com/parrt/msds621), [jeremy howard decision tree/rf](https://course18.fast.ai/ml.html)
+Used [Resources](https://github.com/parrt/msds621), [jeremy howard decision tree/rf](https://course18.fast.ai/ml.html), code for [fastai ml](https://github.com/Giffy/AI_fast.ai/tree/master/Machine%20Learning)
 
 
 # SQL
