@@ -21,6 +21,9 @@ General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#reso
 
 This are the algorithms that you should aim to know inside out. (Focus on `Depth`)
 
+0. Background (Probability,Mult-calculus,Lin-algebra)
+
+
 1. Decision Trees and Random Forests
 
 Used [Resources](https://github.com/parrt/msds621), [jeremy howard decision tree/rf](https://course18.fast.ai/ml.html), code for [fastai ml](https://github.com/Giffy/AI_fast.ai/tree/master/Machine%20Learning)
