@@ -22,7 +22,7 @@ But cities with large populations would show much less variation. The data set i
   2. You developed a new machine learning model and compared it's performance with an old model. You retrieved it's performance on 3 sub-groups of the population, say based on educational background. It turns out that your model is worse(accuracy) in each of these groups but better overall. Your population remained same, just that your old model is from users in 2019(when that model was live) and the new model is from the current year. How would you explain this or what will you do ?</summary>
   
 
-  ** This is an instance of [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Whenever we are comparing between sub-groups,it's important to also look at relative proportion in each of these groups. It might so happen that when the new model is deployed, people have changed their group identity.(some might have acquired a college degree). This happens in many practical situations/deployments.(when you bin your users into groups - subscription status,usage etc)** 
+  ** This is an instance of [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox). Whenever we are comparing between sub-groups,it's important to also look at relative proportion in each of these groups. It might so happen that when the new model is deployed, people have changed their group identity.(some might have acquired a college degree). This happens in many practical situations/deployments.(eg: when you bin your users into groups - subscription status,usage etc)** 
 
 </details>
 
