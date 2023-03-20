@@ -56,3 +56,9 @@ Above courses together have about 130 lessons. Aiming about 5 lessons a day => 1
 Suggested order: Intro to prob, Intro to stat, stat 1.
 
 Extra: lin algebra with app (41),multivariable calc(44)
+
+# OPS
+
+Some notes for devops.
+
+
