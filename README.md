@@ -3,6 +3,10 @@ Here I'll collect questions and give succint answers to possible questions in a 
 
 # Useful resources
 
+System design 
+
+1. [ml system design](http://patrickhalina.com/posts/ml-systems-design-interview-guide/#concepts-and-background)
+
 General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#resourcespreparation-for-ml-ds)
 
 1. [Summary/Notes of ML/DL](https://stanford.edu/~shervine/teaching/cs-229/)
