@@ -32,6 +32,12 @@ Note on flags:
 
 specify a base image -> install some software -> give a startup command.
 
+Dockerfile + docker build
+
+#docker build: what's it doing
+
+
+
 Commands:
 
 - kubectl create -f db.yml : Create pod using 'db.yml'
