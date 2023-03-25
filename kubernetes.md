@@ -47,3 +47,16 @@ Commands:
 Components:
 a. API SERVER(events) b. scheduler(assigs pods to nodes) c.kubelet(manages resources of a node)
 Mandatory: apiVersion , kind, metadata
+
+
+------------
+
+Steps for creating a multi-container application
+
+<img width="542" alt="Screen Shot 2023-03-25 at 12 39 04 PM" src="https://user-images.githubusercontent.com/21222766/227731304-d9cf04f0-2670-4c2d-abbe-bb70f479b047.png">
+
+1. Make a docker-dev file, build it(`docker build -f Dockerfile.dev .`)
+
+why kubernetes: multiple different types of containers on diff quantities on various nodes.
+
+
