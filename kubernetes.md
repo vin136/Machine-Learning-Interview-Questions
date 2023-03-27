@@ -95,6 +95,7 @@ We work with cubectl tool which sends our requests to the master which manages t
   ----------
   creating a multi-client kubernetes application
   
+ clusterip = provides access to an object to everyting else inside the cluster. not to outside services unlike nodeport. 
   
 Create a docker file for each of the object
 
