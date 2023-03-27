@@ -100,3 +100,93 @@ We work with cubectl tool which sends our requests to the master which manages t
 Create a docker file for each of the object
 
 <img width="1339" alt="Screen Shot 2023-03-26 at 2 19 30 PM" src="https://user-images.githubusercontent.com/21222766/227932122-6bfe81d9-7701-4b06-ac64-6298c5567dd5.png">
+
+  
+ -------------
+  How I use docker/automation in my work ?
+  
+  Goals: reproducability, ease of development and deployment. Create a machine learning system that we can reliably iterate on.
+  
+  1. get a virtual env (pyenv for python version control
+  2. set up logging 
+  3. set up formatting and linting
+  4. Makefile : automation tool for organizing commands.
+  && => execute commands in one shell
+  
+  can be used to specify prereqs => here style before cleaning
+  
+  ```
+  # Cleaning
+.PHONY: clean
+clean: style
+    find . -type f -name "*.DS_Store" -ls -delete
+    find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf
+    find . | grep -E ".pytest_cache" | xargs rm -rf
+    find . | grep -E ".ipynb_checkpoints" | xargs rm -rf
+    find . | grep -E ".trash" | xargs rm -rf
+    rm -f .coverage
+```
+  
+ Testing code, data and models:
+  
+<img width="669" alt="Screen Shot 2023-03-27 at 12 07 28 PM" src="https://user-images.githubusercontent.com/21222766/227999247-fc6aa1b6-a9b7-443a-86cf-57ddf69c2282.png">
+  
+  We'll use pytest for testing:
+  
+ Testing functions. 
+  '''
+  # tests/food/test_fruits.py
+def test_is_crisp():
+    assert is_crisp(fruit="apple")
+    assert is_crisp(fruit="Apple")
+    assert not is_crisp(fruit="orange")
+    with pytest.raises(ValueError):
+        is_crisp(fruit=None)
+        is_crisp(fruit="pear")
+'''
+  
+ U can also parametrize:
+  
+  '''
+  @pytest.mark.parametrize(
+    "fruit, crisp",
+    [
+        ("apple", True),
+        ("Apple", True),
+        ("orange", False),
+    ],
+)
+def test_is_crisp_parametrize(fruit, crisp):
+    assert is_crisp(fruit=fruit) == crisp
+
+  '''
+  
+  Additionally we can mark the tests, say for compute intensive tasks.
+  
+  b. Testing data
+  
+  `Great-expectations`: test for missingness,unique vals,type-adherence.
+  
+  Training tests:
+  - Check shapes and values of model output
+  - Check for decreasing loss after one batch of training
+  - Overfit on a batch
+  - is it completely trained (are artifacts generated)
+  
+  Behaviorial testing: perturbations and their outputs.
+  
+  Testing for inference: one row and batch 
+  
+  Monitoring: hese expectations continue to pass online on live production data while also ensuring that their data distributions are comparable to the reference window (typically subset of training data).
+  
+  ---
+  Using git to it's best
+  
+  1. pre-commit hooks: 
+  Before performing a commit to our local repository, there are a lot of items on our mental todo list, ranging from styling, formatting, testing, etc. And it's very easy to forget some of these steps, especially when we want to "push to quick fix". To help us manage all these important steps, we can use pre-commit hooks, which will automatically be triggered when we try to perform a commit.
+  
+ <img width="656" alt="Screen Shot 2023-03-27 at 12 59 08 PM" src="https://user-images.githubusercontent.com/21222766/228012785-263ba239-b402-42af-b5dd-33f9742a9c28.png">
+  
+  Deploy to cloud-run or apprunner.
+
+  
