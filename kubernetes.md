@@ -92,5 +92,10 @@ We work with cubectl tool which sends our requests to the master which manages t
 
 <img width="1418" alt="Screen Shot 2023-03-26 at 1 15 13 PM" src="https://user-images.githubusercontent.com/21222766/227792586-5f16864a-914e-419a-b614-2f62ce118170.png">
 
+  ----------
+  creating a multi-client kubernetes application
+  
+  
+Create a docker file for each of the object
 
-
+<img width="1339" alt="Screen Shot 2023-03-26 at 2 19 30 PM" src="https://user-images.githubusercontent.com/21222766/227932122-6bfe81d9-7701-4b06-ac64-6298c5567dd5.png">
