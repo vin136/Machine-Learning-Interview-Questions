@@ -188,5 +188,12 @@ def test_is_crisp_parametrize(fruit, crisp):
  <img width="656" alt="Screen Shot 2023-03-27 at 12 59 08 PM" src="https://user-images.githubusercontent.com/21222766/228012785-263ba239-b402-42af-b5dd-33f9742a9c28.png">
   
   Deploy to cloud-run or apprunner.
+  
+  ---------
+  Jenkins x for further automation:
+  
+  commands
+  
+  jx promote <> (to manually promote to production environment)
 
   
