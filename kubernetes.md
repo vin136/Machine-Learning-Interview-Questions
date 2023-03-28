@@ -195,5 +195,15 @@ def test_is_crisp_parametrize(fruit, crisp):
   commands
   
   jx promote <> (to manually promote to production environment)
+  
+  -------
+  
+  '''cat /var/log/nginx/access.log |
+      awk '{print $7}' |
+      sort             |
+      uniq -c          |
+      sort -r -n       |
+      head -n 5
+  '''
 
   
