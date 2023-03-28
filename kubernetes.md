@@ -1,5 +1,6 @@
 # Docker
 
+additional notes [at](https://app.grammarly.com/ddocs/1972976366)
 Name spacing and control groups: specific to linux operating system. When you install docker on mac it's running inside a linux virtual machine.
 
 ## Commands
