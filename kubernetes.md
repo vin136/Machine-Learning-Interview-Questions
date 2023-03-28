@@ -102,6 +102,144 @@ Create a docker file for each of the object
 <img width="1339" alt="Screen Shot 2023-03-26 at 2 19 30 PM" src="https://user-images.githubusercontent.com/21222766/227932122-6bfe81d9-7701-4b06-ac64-6298c5567dd5.png">
 
   
+  ## sample codes 
+  
+  Docker
+  
+  example of multi-stage docker file (client docker file)
+  
+  ```
+  FROM node:16-alpine as builder
+WORKDIR '/app'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx
+EXPOSE 3000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
+  ```
+  
+  docker-compose
+  
+  ```
+  version: "3"
+services:
+  client:
+    image: "cygnetops/multi-client-10-14"
+    mem_limit: 128m
+    hostname: client
+  server:
+    image: "cygnetops/multi-server-10-14"
+    mem_limit: 128m
+    hostname: api
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
+  worker:
+    image: "cygnetops/multi-worker-10-14"
+    mem_limit: 128m
+    hostname: worker
+    environment:
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+  nginx:
+    image: "cygnetops/multi-nginx-10-14"
+    mem_limit: 128m
+    hostname: nginx
+    ports:
+      - "80:80"
+```
+  
+  
+ Kubernetes:
+  
+  sample service file
+  
+  ```
+  apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+```
+  
+  Data-base persistent volume claim.:
+  
+  ```
+  apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: database-persistent-volume-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+```
+  
+  Port-forwarding logic
+  
+  ```
+  apiVersion: networking.k8s.io/v1
+# UPDATE API
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    # ADD ANNOTATION
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # UPDATE ANNOTATION
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /?(.*)
+            # UPDATE PATH
+            pathType: Prefix
+            # ADD PATHTYPE
+            backend:
+              service:
+                # UPDATE SERVICE FIELDS
+                name: client-cluster-ip-service
+                port:
+                  number: 3000
+          - path: /api/?(.*)
+            # UPDATE PATH
+            pathType: Prefix
+            # ADD PATHTYPE
+            backend:
+              service:
+                # UPDATE SERVICE FIELDS
+                name: server-cluster-ip-service
+                port:
+                  number: 5000
+```
+  
+  
+  
+  
+  
+  
+  
+  
+  
  -------------
   How I use docker/automation in my work ?
   
