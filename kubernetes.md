@@ -233,9 +233,42 @@ spec:
 ```
   
   
+  ---------------
+  Kubernetes monitoring, logging and auto-scaling ?
   
+  We’ll explore commonly used and basic ways to auto-scale Pods based on memory and CPU consumption. We’ll accomplish that using` HorizontalPodAutoscaler`.
+  The critical element in scaling Pods is the Kubernetes `Metrics Server`.(using helm)
+  Just provides an API to get information about pods. Manually get info `kubectl top nodes`. hps uses this behind the scenes. here's a sample object:
   
+  ```
+  apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api
+  namespace: go-demo-5
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 80
+  ```
   
+  what if there’s not enough available memory or CPU, new Pods will be unschedulable and in the pending status. If we do not increase the capacity of our cluster, pending Pods might stay in that state indefinitely. To make things more complicated, Kubernetes might start removing other Pods to make room for those that are in the pending state. That, as you might have guessed, might lead to worse problems than the issue of our applications not having enough replicas to serve the demand.
+  
+  set-up: --enable-autoscaling argument when creating the cluster. It already comes with Cluster Autoscaler pre-configured and ready.
+  
+  Prometheus is a pull based data-base. We'll have third party exporters that takes the metrics and converts to prometheus format.
   
   
   
@@ -335,13 +368,36 @@ def test_is_crisp_parametrize(fruit, crisp):
   jx promote <> (to manually promote to production environment)
   
   -------
-  
-  '''cat /var/log/nginx/access.log |
+  Shell basics
+  '''
+  cat /var/log/nginx/access.log |
       awk '{print $7}' |
       sort             |
       uniq -c          |
       sort -r -n       |
       head -n 5
+  
   '''
+  
+  awk => extract specific info from a file
+  awk '{print $1}'
+  
+  awk -F "/" '/^\//' '{print $NF}' /etc/shells :(use '/' as the line splitter, get all lines that start with '/' and print out the last element in each of those lines)
+  
+  SED:(search and replace)
+  
+  networking commands
+  
+  `ifconfig` : all the devices connected(virtual or hard)
+  
+  ip -4 addr : get your ip address
+  
+  netstat : detailed info about your network connectivity. (netstat -a, netstat -at (only tcp connections), netstat -l (only active ports))
+  
+  curl <add> : sends a get request
+  
+  can also send post/any methods curl -X post --data "p1= value1" <address>
+  
+  ping <address> : just sends packets 
 
   
