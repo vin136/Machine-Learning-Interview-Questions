@@ -19,6 +19,7 @@ General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#reso
 
 1. Anatomy of an [ML interview](https://pub.towardsai.net/4-types-of-machine-learning-interview-questions-for-data-scientists-and-machine-learning-engineers-b8135805ce1b)
 
+2. [Leet code and prep resource](https://www.teamblind.com/post/7-onsites-7-offers-aAFTykAD)
 
 --------
 # Basic ML Algorithms
