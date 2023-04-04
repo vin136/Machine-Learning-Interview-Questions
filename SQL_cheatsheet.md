@@ -8,13 +8,17 @@
 
 notes: window_function can be any aggregate function such as -> COUNT(), SUM(), AVG(). Also
 
-RANK() => eg: RANK() OVER(ORDER BY editor_rating), output => 1,1,1,4
+- RANK() => eg: RANK() OVER(ORDER BY editor_rating), output => 1,1,1,4
 
-DENSE_RANK()  => output => 1,1,1,2
+- DENSE_RANK()  => output => 1,1,1,2
 
-ROW_NUMBER() => output => 1,2,3,4
+- ROW_NUMBER() => output => 1,2,3,4
 
-NTILE(X) => distributes rows into x number of groups
+- NTILE(X) => distributes rows into x number of groups
+
+- LEAD(col_name) => LEAD with a single argument in the parentheses looks at the next row in the given order and shows the value in the column specified as the argument.  eg: LEAD(name) OVER(ORDER BY opened). In general `LEAD(opened,2)`=> how many steps can also be specified.
+
+- NTH_VALUE(x, n),LAG(),FIRST_VALUE(),LAST_VALUE().
 
 RANK() with ORDER BY many columns => eg: `ROW_NUMBER() OVER(ORDER BY released DESC, updated DESC)`
 
@@ -48,4 +52,9 @@ SELECT
   SUM(first_class_places) OVER (PARTITION BY model)
 FROM train;
 ```
+
+We can also combine => eg: `MAX(revenue) OVER(
+PARTITION BY store_id
+ORDER BY day 
+ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)`
 
