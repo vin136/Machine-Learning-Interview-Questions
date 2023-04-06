@@ -3,6 +3,8 @@ Here I'll collect questions and give succint answers to possible questions in a 
 
 # Useful resources
 
+[Review Questions](https://youssefraafat57.medium.com/deep-learning-interview-questions-answers-439163d3fc02)
+
 System design 
 
 1. [ml system design](http://patrickhalina.com/posts/ml-systems-design-interview-guide/#concepts-and-background)
