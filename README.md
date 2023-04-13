@@ -64,4 +64,8 @@ Extra: lin algebra with app (41),multivariable calc(44)
 
 Some notes for devops.
 
+# Algorithms
+
+1. Don sheehy's [data-structures book](https://donsheehy.github.io/datastructures/)
+
 
