@@ -67,5 +67,6 @@ Some notes for devops.
 # Algorithms
 
 1. Don sheehy's [data-structures book](https://donsheehy.github.io/datastructures/)
+2. [Dynamic programming book](https://www.amazon.com/Programming-Interview-Problems-Dynamic-solutions/dp/B08MSQ3S7V)
 
 
