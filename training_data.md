@@ -1,3 +1,8 @@
+How to handle lack of labels ?
+
+1. Weak supervision : heuristic rules to label. eg: NLP sentiment : `if get rich fast` => spam. Encoding  domain expertise. Even if giving for hand-labeler, better to 
+
+
 # Training-data generation with GAN's
 
 Problem: CT SCANS segmentation WITH SOME Contrast and non-contrast images.
