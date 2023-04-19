@@ -29,6 +29,20 @@ logloss on validation => much better as it takes GM and one confident bad predic
 
 Success stories : for radiologist chest x-ray. worked almost as well.
 
+2. semi-supervised methods:
+
+start with the labels you have and get predictions on others, take the most confident ones and train on them.
+
+3. Transfer learning.: unsupervised pretraining.
+
+4. Active learning: what data-points i should label that will give me most bang for the buck.
+
+Active learning approaches:
+
+1. 100 train samples with labels, rest 900 unlabeled. Train on 100 samples and based on confidence of the predictions in the rest, decide to label them. This assumes the model is well-caliberated.
+2. disagreement btw different classifers
+
+
 
 ### Imbalanced data sets: can happen both in regression(predict hospital bill,here 95 percentile might be most important.) and classification.
 
@@ -49,12 +63,32 @@ Empirical: found that complex models(nn's ) less impact compared to simple ones 
    - oversampling: Create new samples: `SMOTE`(oversample through convex combination of data-points.
 
 
+For neural networks or high-dimensions: 
+
+getting stuck/ cheating => can get low loss even by ignoring a class thereby fitting on to non-generalizable patterns.
+
+One technique: Two phase learning => first train on rondomly undersampled data (avoids simple patterns), then can finetune.
+
+dynamic sampling: throughout your training you can oversample underperforming class and undersample overperforming class.
+
+3. Algorithmic level
+
+a. Cost Sensitive learning(give cost to each class): directly model costs.
+b. class-balanced loss: just give inverse class frequency as weight
+c. Focal loss: -(1-p)^g log(p)
 
 
+### Limited training data
 
+In the order of simplicity:
 
+1. DATA AUGMENTATION: Label preserving transformations.(nlp and cv)
+2. Mixup: train on convex combinaiton of samples and labels.
+3. Data synthesis:
 
-# Training-data generation with GAN's
+Creative uses of GAN's:
+
+`Training-data generation with GAN's`
 
 Problem: CT SCANS segmentation WITH SOME Contrast and non-contrast images.
 
@@ -62,8 +96,6 @@ Here since the ground truth labeling remains same for both the Constrast and non
 
 Used CycleGAN : conditional GAN.
 
-Active learning approaches:
 
-1. 100 train samples with labels, rest 900 unlabeled. Train on 100 samples and based on confidence of the predictions in the rest, decide to label them. This assumes the model is well-caliberated.
 
 
