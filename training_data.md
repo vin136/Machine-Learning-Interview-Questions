@@ -1,6 +1,8 @@
 How to handle lack of labels ?
 
-1. Weak supervision : heuristic rules to label. eg: NLP sentiment : `if get rich fast` => spam. Encoding  domain expertise. Even if giving for hand-labeler, better to 
+1. Weak supervision : heuristic rules to label. eg: NLP sentiment : `if get rich fast` => spam. Encoding  domain expertise. Even if giving for hand-labeler, better to programmatize it.
+
+Success stories : for radiologist chest x-ray. worked almost as well.
 
 
 # Training-data generation with GAN's
