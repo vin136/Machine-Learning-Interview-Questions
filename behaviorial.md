@@ -47,3 +47,16 @@ bigtakeaway : I took the initiative and was proactive in my actions.
 Why it's meaningful: Also this is not the only idea that i persisted in. But most often they don't work. It shows the value of grit.
 
 ----------------
+
+`Time and Resource Management`
+
+You are on a tight deadline, how did you handle it ?
+
+ans: `Youtube annotation`
+
+
+# Project Walk-through Questions
+
+
+
+
