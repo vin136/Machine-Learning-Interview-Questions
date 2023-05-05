@@ -70,4 +70,10 @@ Some notes for devops.
 2. [Dynamic programming book](https://www.amazon.com/Programming-Interview-Problems-Dynamic-solutions/dp/B08MSQ3S7V)
 3. [Elements of programming interview](https://www.amazon.com/Elements-Programming-Interviews-Python-Insiders/dp/1537713949/ref=pd_lpo_2?pd_rd_w=GCBbO&content-id=amzn1.sym.116f529c-aa4d-4763-b2b6-4d614ec7dc00&pf_rd_p=116f529c-aa4d-4763-b2b6-4d614ec7dc00&pf_rd_r=BZ6P460JF6V4BASYEWK3&pd_rd_wg=Bjs23&pd_rd_r=7d67fdab-40d1-4504-9337-712884f8411a&pd_rd_i=1537713949&psc=1)
 
+# Extras
+
+1. [eugene yan's blog](https://applyingml.com/)
+2. [ml-engineer.io](https://github.com/khangich/machine-learning-interview)
+3. [ml sys design book](https://www.amazon.com/Machine-Learning-System-Design-Interview/dp/1736049127/ref=sr_1_4?keywords=machine+learning+system+design&qid=1683245579&s=books&sprefix=machine+%2Cstripbooks%2C120&sr=1-4)
+
 
