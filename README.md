@@ -8,6 +8,7 @@ Here I'll collect questions and give succint answers to possible questions in a 
 System design 
 
 1. [ml system design](http://patrickhalina.com/posts/ml-systems-design-interview-guide/#concepts-and-background)
+2. Following manning books [dist ml](https://www.manning.com/books/distributed-machine-learning-patterns),[design deep sys](https://www.manning.com/books/designing-deep-learning-systems),[churn-predic](https://www.manning.com/books/fighting-churn-with-data)
 
 General guide for [ML interviews](https://www.yuan-meng.com/posts/newgrads/#resourcespreparation-for-ml-ds)
 
