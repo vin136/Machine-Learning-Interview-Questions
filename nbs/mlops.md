@@ -62,7 +62,10 @@ Data Parallelism => same task on different components of the data [Hyper-paramet
 Task parallelism => different tasks on same data at same time.
 
 ### Compute Layer
-We used AWS BATCH WITH ECS as our container manager. for transient errors just retry submitting code.(aws batch hardware failure)
+We used AWS BATCH WITH ECS as our container manager. 
+
+- for transient errors just retry submitting code.(aws batch hardware failure)
+- track resource utilization and find if code execution is blocked. we timeout
 
 Scalability: satisfy growing amounts of work by adding resources.
 
@@ -85,11 +88,33 @@ Factors to consider:
 
 Rule of thumb: Have one general purpose computer layer (batch or kubernetes) + low-latency system for prototyping(local or lambda)
 
+`Getting Scale`
 
+Guiding principle: start simple
 
+`TODO`
 
-Commentary on Metaflow:
-Provides a compute layer agnostic model
-1. Metaflow 
+`Going to Production`
+
+`Stabel orcestration`:
+
+We had a seperate production environment and code.
+Have a metadata store(no actual data but their links) that stores all artifacts.
+
+Have a RDS(Amazon relational data base) to store metadata and deploy service on AWS ECS container.
+
+HA: You run your workflow and your laptop crashes => not highly available.
+
+How metaflow does:
+
+for production handover to => Use AWS Step functions(SFN) => highly scalable workflow orchestrator. 
+
+we can schedule,highly availabe/fault tolerant.
+
+`Dependency management`
+how we deal : prototyping/development (conda(pin python version) + virtual environment(isolation during prototyping)
+
+packages depend on other packages. running `pip install`(each run can give differnt package versions.) does this resolution. If we don't freeze these, production can fail.
+
 
 
