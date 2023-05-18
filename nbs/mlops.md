@@ -116,5 +116,46 @@ how we deal : prototyping/development (conda(pin python version) + virtual envir
 
 packages depend on other packages. running `pip install`(each run can give differnt package versions.) does this resolution. If we don't freeze these, production can fail.
 
+Versioning: via namespaces.
+
+### Processing data (Data warehouse + feature engineering)
+decouple data and compute, typically loading data is the bottleneck
+
+productivity= local files
+
+S3 LOADING : PERFORMANCE DEPENDS ON THE SIZE AND TYPE OF INSTANCE.
+
+Looking up an object in S3 is relatively slow operation. 
+Sometimes loading data from s3 is faster than a local file: if all data fits in cache, s3->in-memory cache, we don't hit local disk.
+
+Which format to store data:
+1. Structured data: Parquet (keeps schema,column oriented),each column storred independently,access to data-types of each column=>efficient encoding.
+2. Read parquet files using Apache Arrow.
+
+Data management
+eg: DATA LAKE=> s3(store facts)
+use aws athena(query engine) to create required data-sets and store them as parquet files (again these are stored in S3)
+For any heavy processing needs : DASK OR PYSPARK (Map-reduce style architecture)
+
+### Serving and architecture
+
+Central question : How quickly do we need predictions once we have inputs available ?
+
+Batch : 15 mins (push based)
+
+Can use a workflow scheduler and store the results in a DB
+
+Streaming : 30 secs - 15 mins: Can receive data at scale and funnel it to data consumers in a few seconds (apache kafka + flink) eg: Watch next on netflix. (push based)
+
+Real-time : under 30secs. eg: internet advertising (pull based)
+
+For real-time : needs a data-store that supports : low latency feature queries + feature encoders 
+
+<img width="376" alt="Screen Shot 2023-05-18 at 6 24 46 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ce42edff-e40c-4314-b4d2-f342d473b9f2">
+
+Sample recommender system:
+
+For existing users: batch predictions refresh nightly (1 day of watching hist vs past history=> not a bad drop in acc)
+Cold start (new users): ask them to select their two most favourite movies. Precompute all possible combinations and serve.
 
 
