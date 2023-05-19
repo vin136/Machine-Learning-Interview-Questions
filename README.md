@@ -78,4 +78,8 @@ Some notes for devops.
 2. [ml-engineer.io](https://github.com/khangich/machine-learning-interview)
 3. [ml sys design book](https://www.amazon.com/Machine-Learning-System-Design-Interview/dp/1736049127/ref=sr_1_4?keywords=machine+learning+system+design&qid=1683245579&s=books&sprefix=machine+%2Cstripbooks%2C120&sr=1-4)
 
+## Not needed but useful resources:
+
+Sampling theory(http://home.iitk.ac.in/~shalab/course1.htm)
+Design of exps(https://home.iitk.ac.in/~shalab/spanova.htm)
 
