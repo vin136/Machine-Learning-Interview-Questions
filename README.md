@@ -77,6 +77,7 @@ Some notes for devops.
 1. [eugene yan's blog](https://applyingml.com/)
 2. [ml-engineer.io](https://github.com/khangich/machine-learning-interview)
 3. [ml sys design book](https://www.amazon.com/Machine-Learning-System-Design-Interview/dp/1736049127/ref=sr_1_4?keywords=machine+learning+system+design&qid=1683245579&s=books&sprefix=machine+%2Cstripbooks%2C120&sr=1-4)
+4. [lil-wang-blog](https://lilianweng.github.io/archives/)
 
 ## Not needed but useful resources:
 
