@@ -1,3 +1,26 @@
+## fast python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 GOALS
 - Execute many projects simultaneously(Volume)
 - Fast iteration (Velocity)
