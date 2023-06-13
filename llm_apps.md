@@ -41,7 +41,12 @@ SOTA = One Embedder, Any Task: Instruction-Finetuned Text Embeddings
 
 Now approx nearest neighbor search.
 
+problems
+- your queries and search are not same
+`sol`: https://blog.reachsumit.com/posts/2023/03/llm-for-text-ranking/
 
+- you might have some structure to your data
+`sol`: lamaindex
 -----------------------------------------
 
 Chartbeat
