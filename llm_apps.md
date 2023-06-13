@@ -23,6 +23,25 @@ testing in case of compositional tasks.
 
 One large commercial application of LLM: `Search and recommendation`
 
+
+## Augmented language models
+
+llm good at : basic reasoning,language/code understanding,instruction following.
+bad at : factual check/upto date knowledge,interacting with world,more complex reasoning.
+
+Context: give unique, upto-date knowledge
+GPT-4: Around 30k tokens(college thesis)
+
+right context = information retrieval.
+
+embeddings = use your task and get an embedding.
+
+baseline = sentence transformer(eg:Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks)
+SOTA = One Embedder, Any Task: Instruction-Finetuned Text Embeddings
+
+Now approx nearest neighbor search.
+
+
 -----------------------------------------
 
 Chartbeat
