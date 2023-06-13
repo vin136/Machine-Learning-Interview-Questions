@@ -38,6 +38,7 @@ embeddings = use your task and get an embedding.
 
 baseline = sentence transformer(eg:Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks)
 SOTA = One Embedder, Any Task: Instruction-Finetuned Text Embeddings
+https://huggingface.co/docs/transformers/model_doc/longformer
 
 Now approx nearest neighbor search.
 
