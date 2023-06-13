@@ -33,4 +33,6 @@ Why Chartbeat ?
 - I think that for most of these companies Engineering is the stronger bottleneck than ml.
 So to my knowledge, chartbeat works in small teams and offers good combination of ml+engineering problems.
 
-- Headline optimization
+Questions ?
+1. what is one problem that the team is facing now and would delighted if i could add some value/improve ?
+2. I read the company blog, and it talks Headline optimization,that implies you did A/B testing for the company. Ultimately users want actionable steps,not just analytics,this implies full blown ml models and optimizing on them. How far the product offerings go in this direction ?
