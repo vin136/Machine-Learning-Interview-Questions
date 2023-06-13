@@ -48,6 +48,27 @@ problems
 
 - you might have some structure to your data
 `sol`: lamaindex
+
+## RAG based models:
+
+for training
+
+<img width="638" alt="Screen Shot 2023-06-12 at 10 17 15 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/f5d141d2-79a0-4dd9-8b30-d614a6265ac8">
+
+
+
+knowledge intensive tasks: approach is retrieve and rerank.
+
+
+
+<img width="1039" alt="Screen Shot 2023-06-12 at 10 15 16 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/c55b451d-cce4-41fb-b064-20a7ad2e7618">
+
+
+- Fact checking
+
+
+
+
 -----------------------------------------
 
 Chartbeat
