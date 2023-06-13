@@ -22,3 +22,15 @@ Compose a task = eg: talk to your data application.
 testing in case of compositional tasks.
 
 One large commercial application of LLM: `Search and recommendation`
+
+-----------------------------------------
+
+Chartbeat
+
+Why Chartbeat ?
+
+- I'm interested in working in ML-centric companies
+- I think that for most of these companies Engineering is the stronger bottleneck than ml.
+So to my knowledge, chartbeat works in small teams and offers good combination of ml+engineering problems.
+
+- Headline optimization
