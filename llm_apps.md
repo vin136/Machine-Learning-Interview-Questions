@@ -49,6 +49,10 @@ Which is better: ask an LLM which one is better acc to any criteria.
 
 Can we automate evaluation ?
 
+Improving the output in production
+
+- self-critique(gaurdrails.ai)
+- sample many times
 
 ## Augmented language models
 
