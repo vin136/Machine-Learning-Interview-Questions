@@ -23,6 +23,32 @@ testing in case of compositional tasks.
 
 One large commercial application of LLM: `Search and recommendation`
 
+## How are you tracking prompts/engineering ?(maybe with git).
+
+How to quantify improvement ? reasonable to expect the performance improves in one way and degrades in another.
+
+What are your proxies for `overfitting`(train vs eval) and `domain-shift`(eval vs test-set) and drift ?
+
+Building evaluation set for your task:
+
+- Start incrementally - adhoc. eg: write a short story about {subject} ?
+As you play with it add different/hard examples into your dataset.
+
+- Use LLM's to help. Say you are building a essay evaluator. Then you can prompt into generate (essay,rating,explanation) pairs
+- Add more data to users and take feedback (like/dislike or annotators)
+
+Is there a way to quantify the quality..'test coverage' ?
+
+## Metrics for LLM's
+
+<img width="637" alt="Screen Shot 2023-06-14 at 11 46 29 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/a556a40d-6601-4ea0-8e7d-214ca0c4d3a6">
+
+Reference matching metrics: a.check for semantic similarity b. ask another llm if two answs are factually consistent.
+
+Which is better: ask an LLM which one is better acc to any criteria.
+
+Can we automate evaluation ?
+
 
 ## Augmented language models
 
