@@ -124,7 +124,14 @@ knowledge intensive tasks: approach is retrieve and rerank.
 - Fact checking
 
 
+--------------------
+## future of LLM's
 
+Models unlikely to get significantly bigger as (scaling laws) need more data and we are gonna exhaust.
+- already ran out of highquality data(internet)
+- FLOPS = (#TOKENS*#PARAMETERS) (both have equal impact, we are scalin models too quickly)
+
+Typically we only train one-epoch.
 
 -----------------------------------------
 
