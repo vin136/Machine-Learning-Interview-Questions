@@ -79,6 +79,12 @@ problems
 - you might have some structure to your data
 `sol`: lamaindex
 
+Hallucinations:
+
+- ensemble.
+- simulate a personality
+- prepend - my best guess is .
+
 ## RAG based models:
 
 for training
