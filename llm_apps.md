@@ -54,6 +54,27 @@ Improving the output in production
 - self-critique(gaurdrails.ai)
 - sample many times
 
+-----------
+## State of GPT
+
+
+1. Can't do too much reasoning per token : sol: chain-of-thought.
+2. Sample multipletimes
+
+<img width="1318" alt="Screen Shot 2023-06-14 at 12 53 20 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/18d791d2-e39e-4779-b76d-8ce7847c3d0e">
+
+
+<img width="1288" alt="Screen Shot 2023-06-14 at 1 19 56 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ae138c35-3a0f-4e78-a64c-944ac938ded0">
+
+
+
+<img width="1081" alt="Screen Shot 2023-06-14 at 1 22 30 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e64892a3-08c9-4a66-9c92-ddba5504ff61">
+
+<img width="876" alt="Screen Shot 2023-06-14 at 1 18 53 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/61025ce1-b150-49e2-8cbc-606fd83ff5fa">
+
+--------------
+
+
 ## Augmented language models
 
 llm good at : basic reasoning,language/code understanding,instruction following.
