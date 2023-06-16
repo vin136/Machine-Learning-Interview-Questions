@@ -134,6 +134,24 @@ Models unlikely to get significantly bigger as (scaling laws) need more data and
 Typically we only train one-epoch.
 
 -----------------------------------------
+## Attention and transformers 
+
+Human visual attention allows us to focus on a certain region with “high resolution” (i.e. look at the pointy ear in the yellow box) while perceiving the surrounding image in “low resolution”.attention in deep learning can be broadly interpreted as a vector of importance weights
+
+What's wrong with seq2seq?
+
+- disadvantage of this fixed-length context vector design is incapability of remembering long sentences. Often it has forgotten the first part once it completes processing the whole input.
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
 
 Chartbeat
 
