@@ -157,6 +157,10 @@ BERT -> ENCODER ONLY, masked language madeling.
 
 When finetuning , finetune the embedding of [CLS] token
 
+ASK:
+
+1. what's the team-size you are aiming now
+2. What's your vision
 
 
 
