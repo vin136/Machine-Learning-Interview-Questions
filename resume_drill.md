@@ -119,8 +119,30 @@ just like language, typical solution is optimize on token level cross-entropy.
 
 I want all my outputs in one shot, there's some inductive bias => monotonicity because text is ordered sequence during training.
 
-Self attention between video frames + cross attention => 
+Self attention between video frames + cross attention .
 
+`CLIP Model`
+
+We want a model that connects images and text really well. Data is easy to get,people put photos and give labels is social media.
+
+- Predicting the text from photo in language modeling isn't a great idea
+- use any image and text encoder. Now we have a constrastive objective.
+
+Needs large enough minibatch.
+
+<img width="1326" alt="Screen Shot 2023-06-19 at 1 13 57 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ea1eba3b-745f-45fc-97f0-07a3750a6051">
+
+At inference ,zero shot
+
+<img width="1117" alt="Screen Shot 2023-06-19 at 1 15 44 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e873a3ea-37c0-4ec0-bcfb-5cae0315bf79">
+
+` Encoders`
+
+Text-encoder: a transformer
+
+Image-encoder: VIT, resnet etc
+
+Zero-shot is as good as fully supervised resnet on imagenet.(crazy)
 
 
 
