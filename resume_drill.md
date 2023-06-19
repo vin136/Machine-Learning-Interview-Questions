@@ -145,6 +145,16 @@ Image-encoder: VIT, resnet etc
 Zero-shot is as good as fully supervised resnet on imagenet.(crazy)
 
 
+GPT -> DECODER ONLY
+T5->Encoder,decoder
+BERT -> ENCODER ONLY, masked language madeling.
+
+- Birectional encoder(transformer encoder), mask out tokens, predict missing tokens.
+- since at test there is no masking=> to replicate purturb for 10% times with random token instead of MASk, N LEAVE IT UNCHANGED FOR SOME %.
+- sentence pair prediction scheme: [cls],[sep],[mask] tokens
+
+When finetuning , finetune the embedding of [CLS] token
+
 
 
 
