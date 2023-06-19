@@ -60,7 +60,7 @@ Now split data onto train,valid,test ? is this good ?
 
 ------------------------------
 
-Project 1: Wave2vec2.0
+## Project 1: Wave2vec2.0
 
 - ASR model trained by self-supervision.
 
@@ -75,9 +75,52 @@ Quantization: dynamic quantization to quantize linear layers of wav2vec 2.0
 
 There's also quantization aware training.
 
-Project 2: Fine-grained video search.
+## Project 2: Fine-grained video search.
 
 Goal: we have a search token and we should be able to index inside a video based on the content.
+
+A video of a person doing a task say cooking a meal.
+Now we have sequence of text-descriptiors...like cut the onion, heat the pan etc. Map each to the corresponding frames(start and end). Some frames are noise are useless.
+
+Download,preprocess etc.
+
+Get embeddigns of these frames.
+
+Problems: Video length is not all same, and also text-sequence varies quite a lot.(sample the videos to have fixed length,let text seq vary.)
+
+ML formulation:
+
+- For each frame classify each of it to 0 to n(being the index of text sequence).
+
+How do you go about solving this problem ?
+
+Step 1: You need strong baselines
+
+Think some:
+
+- Baseline 1: Quantify feature quality.
+
+If features are good similarity scores should be high across the original chunk. To quickly quantify if it's good, using the similarity scores alone i should be able to find the `st` and `en` frames(two).Simple linear model.
+
+The loss, I made is a differentiable version of the metric IOU (GIOU).
+If the features are any good it should be noticeably different from a random model.
+
+- Baseline 2:  Use raw embeddings (sequence of vectors) + a text - vector and maximize the score
+various modeling choices : LSTM + attention(text-embedding)
+
+We are taking each annotation independently, can we jointly take two sequences and predict the output
+
+- Attend and align: 
+
+Thougts: Can also be treated as a seq to seq model ?
+
+I want to maximize the joint => P(y1,y2,...| X)
+just like language, typical solution is optimize on token level cross-entropy.
+
+I want all my outputs in one shot, there's some inductive bias => monotonicity because text is ordered sequence during training.
+
+Self attention between video frames + cross attention => 
+
 
 
 
