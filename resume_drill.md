@@ -130,11 +130,11 @@ We want a model that connects images and text really well. Data is easy to get,p
 
 Needs large enough minibatch.
 
-<img width="1326" alt="Screen Shot 2023-06-19 at 1 13 57 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ea1eba3b-745f-45fc-97f0-07a3750a6051">
+<img width="500" alt="Screen Shot 2023-06-19 at 1 13 57 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ea1eba3b-745f-45fc-97f0-07a3750a6051">
 
 At inference ,zero shot
 
-<img width="1117" alt="Screen Shot 2023-06-19 at 1 15 44 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e873a3ea-37c0-4ec0-bcfb-5cae0315bf79">
+<img width="500" alt="Screen Shot 2023-06-19 at 1 15 44 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e873a3ea-37c0-4ec0-bcfb-5cae0315bf79">
 
 ` Encoders`
 
