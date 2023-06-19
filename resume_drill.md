@@ -60,6 +60,25 @@ Now split data onto train,valid,test ? is this good ?
 
 ------------------------------
 
+Project 1: Wave2vec2.0
+
+- ASR model trained by self-supervision.
+
+Knowledge distillation : KL between teacher and student. inspiration from distil bert(alternative initialization),reduce number of transformer layers and initialize alternatively. And force the last layer activations to be same(l2).
+
+Quantization: dynamic quantization to quantize linear layers of wav2vec 2.0
+
+- dynamic: weights are quantized to int8 and activations are tuned in real-time(the scaling factor). Overhead in terms of compute but need not know any info about data beforehand.
+- static: everything is done beforehand.
+
+`Big-idea`: store scale and shift in map float,rest all  to int.
+
+There's also quantization aware training.
+
+Project 2: Fine-grained video search.
+
+Goal: we have a search token and we should be able to index inside a video based on the content.
+
 
 
 
