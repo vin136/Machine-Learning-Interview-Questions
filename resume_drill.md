@@ -11,6 +11,8 @@ Here's the plan:
 
 **1. Training consistency.**
 
+Goal: action consistency.
+
 Keep other parts simple: CNN based architecture + loss function: `A3C`
 
 Define metrics of importance: trade_specific: avg.return,sharpe_ratio,loss_function_specific:policy loss,value loss etc.
