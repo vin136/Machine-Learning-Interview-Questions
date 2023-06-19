@@ -142,6 +142,8 @@ What's wrong with seq2seq?
 
 - disadvantage of this fixed-length context vector design is incapability of remembering long sentences. Often it has forgotten the first part once it completes processing the whole input.
 
+- 
+
 
 
 
