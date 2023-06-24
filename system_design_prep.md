@@ -51,6 +51,60 @@ ViewChannel()
 
 # Design Google drive
 
+Functional
+
+Upload
+Download
+Remove
+Folders/hierarchy
+
+Non-functional
+
+50M active users,each user get's 15GB
+
+Observations => storage req is huge.
+
+We want durability
+
+Read/write ratio => 2:1
+
+What's the big problem => always available + reliable
+
+Data Model
+
+data = file,image,video etc
+metadata = Database, NoSQL, not too many joins
+
+Files => HDFS vs ObjectStore
+
+- file-systems are stored in hierarchy,can modify files too, but complex
+- S3 though flat but can make it hierarcy by names, but i'll get reliability and availablity for free(s3).
+
+  For folders use a kv store DB where all the metadata of folders is stored.
+
+<img width="904" alt="Screen Shot 2023-06-23 at 10 46 35 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/2634d656-4cf0-4e4c-a657-ee9ecabbcdcb">
+
+
+# Design Notification System
+
+We need to send msgs in response to some events.
+
+Functional
+
+System behaviour
+
+
+
+-------------------------
+
+# General tools
+
+
+
+
+
+
+
 
 
 
