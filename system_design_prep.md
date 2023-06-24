@@ -39,9 +39,43 @@ It's the series of guidelines made to make web scalable,reliable,here are those
 - Stateless: Reliability(under failure,since server stores no data,client is not effected) and Scalability(since data is removed after processig a request,server can handle more requests)
 
   `Cons`: repeated effort,or establish connection.
+Moreover it's architecture is `layered and uniform interface` thus we can put proxy's,load-balancers etc in between client and server.
 
-GRAPHQL
-gRpc
+<img width="862" alt="Screen Shot 2023-06-24 at 2 26 20 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/b1590d7a-6450-47f3-8980-1ddff3b2d934">
+
+**Best-Practices**
+
+- Filtering and pagination : eg `https://www.example.com/posts?author=fahim`
+- `API versioning`: eg: API versioning can be done by adding /v1 or /v2 to the API path.
+
+  **Cons of RestAPI**
+
+`Multiple requests problem:` A REST API sends multiple requests whenever data required by the application resides on multiple endpoints
+`Overfetching and underfetching`
+
+Example:
+stateless design example: consider pagination with youtube : when user scrolls client sends the offset and limit,thus server needs to store no state. `https://youtube.com/videos?offset=0&limit=10`
+
+Overfetching and underfetching: Say we want to show comments, require username,photo and comment, the `\user` endpoint might have more data.
+  
+
+**GRAPHQL**
+It uses POST request where in body we give the `query`. For each resource we can specify the fields we want.
+
+- Query (read)
+- mutation (any changes)
+
+Built on `POST` it's not idempotent thus caching is little bit hard.
+
+CONS : 1) Cachining is hard, 2) error-handling is not that good, we need to parse the response.
+
+**gRpc**
+
+Built on HTTP2. We need proxy can't be used with browser. Sends proto-buffer instead of JSON. => much faster and efficient. By directional streaming.
+
+`cons`: less tooling + slower to develop.
+
+
 
 
 1. Forward and Backward compatibility.
