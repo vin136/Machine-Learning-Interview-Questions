@@ -17,3 +17,41 @@ For viewing => 1. we can send in small chunks.,2. how to send chunks=> tcp vs ud
 We need rate-limiter(inside load balancer) interms of uploading video's.
 
 <img width="868" alt="Screen Shot 2023-06-23 at 9 24 13 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/5427d67a-83ce-4622-8c93-ecb736fee31c">
+
+# Design Discord/slack/msging
+
+Functional
+
+Servers and channels.
+We should have notifications of mentions
+We should see the msgs with low latency,
+should be able to pick from where left off in a chanel.
+
+Non-functional
+
+Low latency
+available,redundant,etc
+Scale (medium) => How many people could be in a server. Estimate => 10k msgs/day
+
+
+High level actions
+
+SendMsg(body) => can be done in a HTTP request.
+server,channel
+
+But seeing msgs=> 
+ - HTTP via polling is fine but not good, say we poll every 1 sec not very good as too many requests
+ - Websocket (HTTP streaming available in new version)
+
+How do we handle page load, opening and seeing a channel ?
+
+ViewChannel()
+<img width="600" alt="Screen Shot 2023-06-23 at 10 15 46 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/1d6c2a0f-aefc-499d-a962-31e72e097dfd">
+
+
+# Design Google drive
+
+
+
+
+
