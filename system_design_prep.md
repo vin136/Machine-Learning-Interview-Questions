@@ -228,9 +228,16 @@ Some basic tests on models like
 
   Imagine you've updated a sentiment analysis system you've trained and tested on you. Now in the same sentence you replace with synonyms, output label shouldn't change `invariance testing`. Now you might have `directional expectations`. For us we introduced noise and checked action consistency.
 
+# System Design
+
+## Core Concepts
 
 
-# Design Youtube
+
+
+## Design Youtube
+
+
 
 Core functionality
 
