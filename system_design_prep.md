@@ -142,6 +142,16 @@ How to make POST idempotent: client can add a unique request identifier.
    - Client side: The server sends the empty HTML file (which means no HTML content is populated except the basic structure of the HTML file) with JavaScript code or a link to it. The browser executes this JavaScript code to generate the web page. (Good to use when data changes frequently)
     - Serverside: sends the complete HTML. (GOOD FOR INITIAL LOAD,else making multiple requests for html is not good.)
 
+- Caching
+ - client-side: Browser caches resources  related to HTML, CSS, and other multimedia files
+ - server side:
+     - API gateway cache:  stores responses to frequently requested API calls
+     - Application server cache:  data is stored on the database, and fetching the data from the disk takes much more time than the RAM. This layer stores the frequently accessed data objects in different formats.
+      memcached and `Redis` for server-side caching.
+  - Middleware cache:
+      - CDNs
+      - DNS, ISP
+
 
 
 1. Forward and Backward compatibility.
