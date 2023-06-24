@@ -85,8 +85,9 @@ Client a. ensure the server identity(via digital signatures) b. Confidentiality:
 
    why ? : to protect from attacks like SQL/CODE Injection
 
-   `Client side-validation`
+   **Client side-validation**
    eg:
+   
    ```
    function emailValidation() {
   let entity = example.forms["Form"]["email"].value;
@@ -96,7 +97,8 @@ Client a. ensure the server identity(via digital signatures) b. Confidentiality:
   }
 }
    ```
-   `Server side validation`:
+
+   **Server side validation**:
 eg: Password strength check. if not strong we get a response.
 
 Why's client side validation required ? => reduce user latency. and reduce strain on server.
