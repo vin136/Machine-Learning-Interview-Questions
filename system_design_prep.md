@@ -155,7 +155,12 @@ For caching HTTP response provides various headers that let's u decide what/how 
 
 
 
-1. Forward and Backward compatibility.
+Good API design =  Forward and Backward compatibility, pagination, versioning
+
+## Example API designs:
+
+- API GATEWAY: when you have multiple microservices inside an application, we have middleware that does authentication and provides a facade with loose coupling, the services themselves are abstracted away.
+- gateway(reverse proxy) hides the server’s origin and retrieves internal data for the client. The gateway acts as a single endpoint that client apps use, and then redirects all requests to internal (micro)services. This way, only this **one endpoint** is exposed to the world
 
 
 # Testing
