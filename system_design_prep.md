@@ -151,6 +151,7 @@ How to make POST idempotent: client can add a unique request identifier.
   - Middleware cache:
       - CDNs
       - DNS, ISP
+For caching HTTP response provides various headers that let's u decide what/how to cache. eg: `Last-Modified`,`Cache-Control`
 
 
 
