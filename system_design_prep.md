@@ -83,12 +83,14 @@ Client a. ensure the server identity(via digital signatures) b. Confidentiality:
 
 2. Input Validation.
 
-   why ? : to protect from attacks like SQL/CODE Injection
+why ? : to protect from attacks like SQL/CODE Injection
 
-   **Client side-validation**
-   eg:
-   
-   ```
+**Client side-validation**
+eg:
+
+
+```
+
    function emailValidation() {
   let entity = example.forms["Form"]["email"].value;
   if (entity == "") {
@@ -96,9 +98,9 @@ Client a. ensure the server identity(via digital signatures) b. Confidentiality:
     return false;
   }
 }
-   ```
+```
 
-   **Server side validation**:
+**Server side validation**:
 eg: Password strength check. if not strong we get a response.
 
 Why's client side validation required ? => reduce user latency. and reduce strain on server.
@@ -231,6 +233,44 @@ Some basic tests on models like
 # System Design
 
 ## Core Concepts
+
+**General Tools**
+
+#### DataBases
+
+**Relational Databases.**
+
+Stress on 
+A: atomicity : all or nothing for transactions
+C: consistency : constraints (unique ids',non-null, primary-key etc)
+I:Isolation : serialization (multiple concurrent transactions can lead to inconsistent states eg: DirtyReads => when one transaction reads a value that's not committed yet)
+D: durability (permanently exist)
+
+**NoSQL**
+
+`Key-Value` => Redis,memcache (uses RAM)
+
+USE: small data with very quick reads and writes.
+
+`Document Stores`: MongoDB
+
+`USE`: No Schema and very deep nesting.Not many joins are needed.+ SCALED easily.
+
+`WideColumn Database`: Cassandra
+
+USE: time series data, typically best when we have lot of writes n not much read/update + Flexibility(schema or noschema) + Massive Scale
+
+`GraphDB`: Neo4j
+
+USE: Natural graphs
+
+
+Why Scaling SQL databases is Hard ?
+
+Imagine creating two shards => now how to know where to route, joins, and enforce non-null, foreign constraints.
+
+NoSQL Gives Eventual consistency.
+
 
 
 
