@@ -75,6 +75,72 @@ Built on HTTP2. We need proxy can't be used with browser. Sends proto-buffer ins
 
 `cons`: less tooling + slower to develop.
 
+## Security
+
+1. Trasport layer security: client is able to authenticate the server via `TSL`.
+
+Client a. ensure the server identity(via digital signatures) b. Confidentiality: encryption
+
+2. Input Validation.
+
+   why ? : to protect from attacks like SQL/CODE Injection
+
+   `Client side-validation`
+   eg:
+   ```
+   function emailValidation() {
+  let entity = example.forms["Form"]["email"].value;
+  if (entity == "") {
+    alert("E-mail is a required field");
+    return false;
+  }
+}
+   ```
+   `Server side validation`:
+eg: Password strength check. if not strong we get a response.
+
+Why's client side validation required ? => reduce user latency. and reduce strain on server.
+
+3. Authorization and authentication
+
+HTTP PROVIDES Basic authentication via Authorization header. eg: Authorization: Basic Qm9iOnRoZWZhcm1lcg==, this is the base64 encoding of the username and password.
+
+`cons`: credential are encoded instead of encrypted.
+
+API KEYS : authenticate the application sending the request
+
+`pro`: attacker has a compromised key, they won’t have the user’s credentials.
+`con`: need another authorization protocol
+
+`JSON Web Token`
+
+`pros`:
+- offers temp access to a resource and scalable. but has  `overhead`
+
+The process is like client sends a basic authenticate request using http header, username, password.  validates and sends the token,client sends this back and eventually connection is verified.
+
+But typically we use industry standard token-based authorization tools like OAuth 2.0.
+
+**Some important concepts**
+
+- API rate limiter : throttles(ignore) clients' requests that exceed the predefined limit in a unit time. Can also to prioritization of requests.
+
+Where to place: Server side or as a Middleware. if on client side service provide configuration can't be easily applied.
+
+- EVent driven protocols: The event-driven architecture protocols provide users with the intended data without making a request to the server whenever an event triggers. We learned that event-driven architecture is a suitable option to address the limitations of HTTP techniques for real-time communication
+
+eg: Websocket: both sides communicaton happens, there are other one's only where client get's info from server everytime there's an event.
+
+- Cookies and Sessions: A cookie is a small amount of data stored by a specific website (server) on the user's computer.Cookies are also used to establish sessions on the server side, session info is stored on server side.
+
+- Idempotency: It allows caching thus optimization. Good as it avoids possible data duplication issues(imagine a bank transaction)
+GET, PUT,DELETE => IDEMPOTENT, PATCH,POST=> NOT.
+
+How to make POST idempotent: client can add a unique request identifier.
+
+ - Serverside vs Client side rendering
+   - Client side: The server sends the empty HTML file (which means no HTML content is populated except the basic structure of the HTML file) with JavaScript code or a link to it. The browser executes this JavaScript code to generate the web page. (Good to use when data changes frequently)
+    - Serverside: sends the complete HTML. (GOOD FOR INITIAL LOAD,else making multiple requests for html is not good.)
 
 
 
