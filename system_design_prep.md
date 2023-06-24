@@ -1,3 +1,52 @@
+# Questions: Front end
+
+When there is any new application, you'd want to start developing independently, how's the communication/synchronization, say you might need some functionality before you can do etc ?
+
+# API Design
+
+## Basics
+Api's over the web, communication types.
+
+Many protocols built on top of 
+
+`TCP` : HTTP,websockets,smtp,SSH
+`UDP`: WebRTC(peer-peer,eg: googlemeet)
+
+building a realtime chat-system with HTTP , client needs to do polling and expensive,
+- with websockets, you send a http request and your connection is upgraded to websocket(status code 101), then a persistent connection is established.once established data can move in either side.
+- con of websockets : stateful, hard to recover from lost connection.
+
+## Represention
+
+  Data Formats
+  Textual formats: good when the client is outside organization as readability plays a big role.
+  
+  - JSON => Compact,human readable, and language agnostic(imagine pickling the data and sending)
+  
+  Binary Format: much more compact with stronger schema.
+  - protobuffer,apache-thrift,avro
+
+## Paradigms
+
+REST API
+
+What's REST ?
+
+It's the series of guidelines made to make web scalable,reliable,here are those
+
+- Client-Server architecture,aka request-response : seperation of concerns
+- Cache : store response to the earlier request. response data should be explicitly marked as `cacheable`. Tradeoff: reduce reliability(stale data) but increases speed. But typically we have `Expires` header in the HTTP response.
+- Stateless: Reliability(under failure,since server stores no data,client is not effected) and Scalability(since data is removed after processig a request,server can handle more requests)
+
+  `Cons`: repeated effort,or establish connection.
+
+GRAPHQL
+gRpc
+
+
+1. Forward and Backward compatibility.
+
+
 # Testing
 
 Unit tests: tests on individual components that each have a single responsibility (ex. function that filters a list).
