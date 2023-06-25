@@ -236,7 +236,7 @@ Some basic tests on models like
 
 **General Tools**
 
-#### DataBases
+### DataBases
 
 **Relational Databases.**
 
@@ -270,6 +270,46 @@ Why Scaling SQL databases is Hard ?
 Imagine creating two shards => now how to know where to route, joins, and enforce non-null, foreign constraints.
 
 NoSQL Gives Eventual consistency.
+----------------------
+
+Example of scaling SQL based database
+
+Scalability and Performance: Use a Proxy-server that decides which shard to route the information + Configuration Service(Zookeeper) maintains shardState + ShardProxy(cache query result,publish metrics,terminate queries that take too long to run) 
+
+Availability: Replication, maybe a ReadReplica. And put these in different datacenters. After write data is syn or Asynch replicated.
+
+<img width="600" alt="Screen Shot 2023-06-24 at 7 50 30 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/2d4fa2c8-595d-4b90-8404-ca58d2b7b447">
+
+Now Consider NoSQL: Apache Cassandra
+
+- Data is split into Shards, but each shard talks to each other, so no configuration service needed. Shard exchg info with few others(gossip protocol),clients call any node(closest or round-robin), during writes it sends the request to multiple nodes and waits for confirmations, called as quorum rights and reads. Deals with staleness. + stores copies.
+<img width="600" alt="Screen Shot 2023-06-24 at 7 56 43 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/a5f8d61c-6baf-492c-8523-fe297a5035ba">
+
+-------------------------------
+
+### CDN's and Caching
+
+Point to keep-in-mind when using these in system design
+
+**CDN**
+
+How data get's into a CDN => a. push server (when data get's to origin server,it pushes it to CDN's), b. Pull: first look at closest cdn, if not found it acts as a proxy and request from origin, now it stores this copy, better if `diff users have different patterns`.
+
+eg: say signing up to twitter and we are using apple to signup, since it's static code we are likely getting it from APPLE CDN for authentication.
+
+**Caching**
+Imagine twitter getting tweets
+
+how data comes in ?
+- write around cache : first write stuff on disk, in read if there's a cache-miss write it down.
+
+- write back cache : put in cache,don't upload to disk and put it in disk lazily (fast writes with less durability eg: maybe liking)
+  
+hOW Data goes out of cache when filled ?
+
+Many caching algorithms eg: LRU(makes sense in case of twitter),LFU,FIFO.
+
+
 
 
 
