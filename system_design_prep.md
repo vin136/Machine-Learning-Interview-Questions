@@ -507,11 +507,9 @@ First LRU cache helps to have some popular tweets in cache but for a specific us
 <img width="600" alt="Screen Shot 2023-06-25 at 9 25 37 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/d64eec7b-de90-4d43-b8e9-aee77b228054">
 
 
-
-
-
-
-
+Now, we can also shard the feed cache that has all the feeds that get's updated asynchronously via pub-sub style model.
+- But here if someone popular tweets, we'll update a lot of feeds in the cache.
+- also if the user follows someone new(here we can tolerate some delay)
 
 
 
@@ -539,7 +537,232 @@ We need rate-limiter(inside load balancer) interms of uploading video's.
 
 <img width="868" alt="Screen Shot 2023-06-23 at 9 24 13 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/5427d67a-83ce-4622-8c93-ecb736fee31c">
 
-# Design Discord/slack/msging
+## Design a monitoring system
+Design a system that collects application performance metrics. Imagine you work at a large company that runs thousands of services. For all these services, we want to collect performance metrics such as throughput (number of requests processed per minute), errors (number of requests that fail), average response time, etc. Service owners should be able to see their per-minute service metrics in the dashboard.
+
+**Functional requirements**
+
+The system should store metrics at one-minute granularity.
+Older data should be stored at lower granularity (e.g. 1 hour).
+
+**non-Functional requirements**
+High scalability (the total number of metrics will grow rapidly over time).
+
+High availability (keep in mind that latest data is typically more important than old data).
+
+High read performance (especially important for high resolution alerts configured on top of metrics).
+
+Low dollar cost (especially for storing less relevant/old data).
+
+**Key Actors**
+
+Metric producer services, programs (web services, applications, batch jobs, etc.) that emit performance metrics.
+
+User, typically an owner of the service, a person who watches the metrics.
+
+Metric consumer services, programs that read metrics on a regular basis to timely react to their changes (e.g. alert generation systems, autoscaling systems, anomaly detection systems).
+
+**Key components**
+
+<img width="700" alt="Screen Shot 2023-06-25 at 10 25 00 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/5fe5e41b-cd2a-48d5-b250-f174d252e174">
+
+API gateway, a web service that represents an entry point to the system.
+
+Metric aggregator, a service that aggregates metric values in memory over a short period of time and stores the aggregated values in persistent storage.
+
+Metric partitioner, a service responsible for partitioning metrics. This allows for more efficient aggregation of metric values.
+
+Messaging system, a temporary buffer for metric data that helps parallelise metric processing.
+
+Monitoring client, a client application for a monitoring system that helps to aggregate data on the client side and send aggregated data for further aggregation on the server side.
+
+Hot storage, read-optimized storage.
+
+Cold storage, persistent storage for metric values.
+
+Read service, a web service responsible for serving read requests by retrieving metric data from multiple locations (hot and cold storage).
+
+Now think about data-flow
+
+**high-level architecture**
+
+<img width="922" alt="Screen Shot 2023-06-25 at 10 28 09 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/01ac1d6b-0217-40f8-a86a-4999bc77f613">
+
+Monitoring client is a daemon process that runs locally on every metric producer service machine. It reads data from service logs and aggregates data in a local memory. Think of it as a hashmap where a metric name represents a key (e.g. "total request count") and value represents a count (of requests, errors, etc.) or a sum (of response times, request bytes, etc.). Periodically, for example, at the end of every minute, all accumulated values are sent to the monitoring system.
+
+API gateway is a single entry point for all requests. It is a common component of many modern architectures. Classic API gateway performs many different functions: authentication, authorization, request routing, response aggregation, protocol translation, load balancing, TLS termination, IP listing, rate limiting, response caching, response compression, logging, monitoring, and a few more. We will cover API gateways in more detail in the second module of the course. If the monitoring system and metric consumer services all live within a trusted environment and read latency is critical, we can have metric consumer services call the read service directly.
+
+Each producer service can produce thousands of different metrics. And there can be thousands of producer services. Which can lead to high cardinality of metrics. To aggregate data on the server side, which means calculating the total count or the total sum for each metric for every 1-minute interval, we need to partition metrics first. This allows us to split all metrics into several disjoint groups, and then aggregate metric values within each group. We can use a unique metric name (metric name + service name) as a partition key. We can avoid partitioning metrics if metric cardinality is low.
+
+Incoming metric data is buffered in a messaging system. Each metric goes to its own shard/partition inside the messaging system. There will be a separate consumer (metric aggregator service instance) for each shard.
+
+Metric aggregator service aggregates metric values. Which basically means it sums up the incoming values for a metric. It does it for a predefined duration (e.g. 5-10 seconds) and sends the accumulated value to persistent storage. If we need to scale and/or speed up data aggregation, we first add more shards/partitions to the messaging system and then add the same number of machines/instances to the service. So that each new shard gets its own dedicated consumer.
+
+Hot storage represents a distributed cache (e.g. Redis) or a key-value database (e.g. DynamoDB) and stores the last N days of data. In monitoring systems, the most recent data is more important and read frequently, while older data is usually less important and read less frequently. Therefore, this storage has two key requirements: high read throughput and low read latency.
+
+Cold storage represents persistent storage for data. We can store all data there (if our hot storage is not persistent) or only data older than N days (if our hot storage is persistent). As discussed in the course, object storage (e.g. S3) is a good option. Data in hot and cold storage is stored at some granularity, for example, 1 minute. But on a large scale (from millions to billions of metrics), storing such a large amount of per-minute data is costly. In addition, as we have already mentioned, the value of monitoring data decreases over time. For this reason, it makes sense to aggregate data over time into 5-minute intervals, 1-hour intervals, and so on. The system should have a separate component responsible for aggregating data from shorter time intervals to longer time intervals and purging data for shorter time intervals from the storage.
+
+Read service has three primary functions: route read requests to the appropriate storage, stitch data from hot and cold storage when both new and old data is requested, cache responses. The most recent monitoring data is not well suited for caching because it changes frequently. But old data can be effectively cached. When there is a read request that spans both storages, we will fetch new data from hot storage and old data from an internal cache of the read service.
+
+**General video analytics**
+
+1. Functional API requirements
+   
+<img width="600" alt="Screen Shot 2023-06-25 at 10 54 44 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/a440cd5b-51de-4f0e-abcf-310fa31de650">
+
+2.Non-functional req
+
+<img width="700" alt="Screen Shot 2023-06-25 at 10 57 57 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/5cf55d40-052c-4a6d-9aef-cdaabc54077e">
+
+3. High level architecture
+
+just throw high-level components that are needed, for our case
+
+<img width="932" alt="Screen Shot 2023-06-25 at 10 59 56 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/bbdb6915-e0ec-40e5-aa2a-f0e954664fd0">
+
+And now drive the conversation and choose which part of the system you wanna talk about. Typically it's data-model
+
+What data you want to store , where, How ?
+
+What ?
+
+<img width="600" alt="Screen Shot 2023-06-25 at 11 03 25 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/336183c3-8637-49a2-ac50-46b0311c567a">
+
+So which one should we choose ? Ask the interviewer. => Stream data-processing vs Batch data-processing
+
+Let's focus on real-time aggregation.
+
+Where do we store ? 
+
+Think and design based on functional requirements
+
+How ?
+
+Think of data-flow. Let's say we want to build a report
+
+Nouns : If using rDBM => THINK about entities
+Verbs: if NOSQL => think about query and store it.
+
+Note about cassandra: it's fault-tolerant and both read-write throughput inc linearly as we add new machines. Supports multi-datacenter replication n supprots timeseries data. SUPP: Asynch masterless replication.
+
+<img width="600" alt="Screen Shot 2023-06-25 at 11 10 15 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/70361bb0-997b-4059-bb58-bfba4860fd55">
+
+
+**PROCESSING Service**
+
+If video user opens => show real-time count
+if uploader opens => show hour-level counts
+
+Requirements: scalable,reliable and fast.
+
+<img width="400" alt="Screen Shot 2023-06-25 at 11 15 57 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/a1c120c4-e860-4208-a6b7-8ba2a4caaa3a">
+
+Data-aggregation:
+
+Should the processing service pull-events or get events pushed. Pull is better as there will be other temp storage in case of service failure.(reliability)
+
+<img width="939" alt="Screen Shot 2023-06-25 at 11 21 29 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/f356f081-c3b0-4dfb-ba64-e3b02c2d59f8">
+
+We don't want to loose raw-events ?
+
+1. checkpointing: We can checkpoint after we processed some events determined by offset
+2. partitioning: we can put events on diff queues
+
+   <img width="400" alt="Screen Shot 2023-06-25 at 11 23 43 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/3f48c65b-eeea-4ea6-8607-7e639d07f6f2">
+
+Detailed design of processing service
+
+we need a partition consumer=> maintain connection and deserialize data. Also helps to eliminate duplicate events, we store a dist-cache for this.Typically this is a single thread(else complex inc say for checkpointing)
+
+Aggregator : keeps accumulating the data,like a hash-map temporarily and pushes to internal queue.
+
+Internal queue => decouple consumption and processing(of each temp hashmap),as here we can have multiple consumers(no issue). (imagine the airport check in , single-line for ticket check but multiple lines for screening)
+
+
+DATABASE WRITER: 
+
+- Deatletter queue => a place where msgs can be sent if they cannot be routed to correct destination.
+- WHy ? protect ourselves from database per or availability issues.
+
+Dataenrichment
+
+- Remember how we store data in cassendra, we need video title with views count etc. But all these features doesn't come to processing service, thus this info comes from somewhere else, but trick is this DB should be on same server, thus eliminates remote calls => embedded databases. eg: linkedin use this for who viewed your profile where they show additional info like how many are recruiters.
+
+State-management:
+
+we keep things in memory but what to do if machine fails, but we have event stored in partition and can restart from there. better approach is to store the state:
+
+precessing - service
+
+<img width="600" alt="Screen Shot 2023-06-25 at 11 37 55 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/703c7d73-076a-45cb-8fed-c2793c9da241">
+
+here's the data-ingesting pipeline
+
+
+<img width="925" alt="Screen Shot 2023-06-25 at 11 39 49 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/9e2d0014-0e64-49ec-a62b-d2129608487a">
+
+**Partitioner-service-client**
+
+`blocking vs non-block I/O`
+
+thread per request => When a client makes a request to server, it processes and sends back the request. Client initiates the connection by sockets, the thread that handles that connection is blocked, thread per connection, but if server starts to slow-down then whole cluser dies, thus we need rate-limiter.
+
+alternative is non-blocking I/O => server just queues the request and then actual i/o process at some point,piling req is less expensive than piling threads.
+
+Tradeoff: non-blocking => inc complexity, blocking=> we can use thread local variables etc.
+
+`buffering and caching`
+
+Combine events together and send several of them togeter.
+
+`timeout`
+
+- how much time a client is willing to wait for connection timeout: connection to establish, request-timeout: request. What should we do
+- retry, (exponential backoff and jitter)
+- still we can make too many retries=> circuit breaker pattern.
+
+  
+**Load-balancers**
+
+How cone lead-balancer is not single point of failure ? how does loadbalancer know the partition-services, and it should know the health ? availability(primary and secondary)
+
+Service registry registers to a load balancer.
+
+**partitioner service and partitioner**
+
+partitioner service 
+
+=> retrieve individual video view event(remmeber we batched on client side), and route to a partition. + uses a strategy to partition. how to ensure fair load/balance ? (diff problem) a. split a big partition to two new partitions (consistent hashing) b. maybe for popular video channel use a diff partition.
+
+client side service discovery => a webservice to which each partition registers thus partition service knows which nodes are available.
+
+other option is like as in cassandra.
+
+Partition replication => single leader and peer-peer
+
+partition => also a webservice of pre-defined size that stores time ordered msgs
+
+**Data retrieval path**
+
+for retrievivg time series data => lot of data=> solution is roll-up, trick is we don't need to store all data in DB (cold storage)
+
+<img width="600" alt="Screen Shot 2023-06-25 at 12 04 23 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/aa5cdbff-f223-4ced-a15f-4cc6b2131fef">
+
+
+Notes:
+Tools:
+data-enrichment => embedded DB: ROCKSdb
+scalin n managing MySQL: vitess
+dist-cache for message deduplication: Redis
+temp queue n deliver msgs: RabbitMq/Aws SQS
+leader election n partition n server discovery: Zookeeper
+Monitioring: AWS CLOUDWATCH,ELK(elastic,logstash,kibana)
+
+
+<img width="974" alt="Screen Shot 2023-06-25 at 10 44 52 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/42a76fd8-9cbf-483f-98d0-e119ae901edb">
+
+
+## Design Discord/slack/msging
 
 Functional
 
