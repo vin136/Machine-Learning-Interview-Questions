@@ -301,13 +301,80 @@ eg: say signing up to twitter and we are using apple to signup, since it's stati
 Imagine twitter getting tweets
 
 how data comes in ?
+Cache-aside (we can also expiry time on cache-entries to overcome some drawbacks)
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 32 27 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/8aa630b3-9936-4b19-8457-7a540b2b38eb">
+
+Read and Write through cache 
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 40 00 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/3e315864-d769-45c1-b6ef-dc71dbd885c9">
+
+Write-back
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 41 25 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/409ed61e-94da-483f-8415-427810c195cd">
+
+
 - write around cache : first write stuff on disk, in read if there's a cache-miss write it down.
 
 - write back cache : put in cache,don't upload to disk and put it in disk lazily (fast writes with less durability eg: maybe liking)
   
 hOW Data goes out of cache when filled ?
 
-Many caching algorithms eg: LRU(makes sense in case of twitter),LFU,FIFO.
+Many caching algorithms eg: LRU(makes sense in case of twitter),LFU,FIFO. Also time-based eviction but it's typically implemented as refresh-ahead,useful if there are hotkeys(very frequently accessed)
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 23 20 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/8f425f31-491d-44c3-9da1-7a60b626960d">
+
+Cache can be used to deal with duplication => put(in databases) or even in msging queues. Basically store the massage hash in the cache.
+
+Eg:
+<img width="600" alt="Screen Shot 2023-06-24 at 8 26 45 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/21f6079e-e68e-410a-bb73-7c2a102b4295">
+
+--------------------------------------
+
+### How to build efficient communication in distributed systems (Throughput)
+
+### How to deliver data quickly ?
+
+1. Batching => instead of making multiple http requests make a single one with multiple requests
+eg: google drive batchapi, kafka, SQS
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 55 36 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ed8cdc01-b9db-4a9d-a47c-1026f4f9f368">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 8 56 34 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/7d2a52c4-19ba-48c9-9107-8986f66c31fe">
+
+2. Compression
+
+Think about compression in databases(say configure cassandra db for compression),queues etc
+
+### How to deliver data at large scale ?
+
+
+
+### How to protect servers from clients ?[System Overload]
+<img width="600" alt="Screen Shot 2023-06-24 at 9 07 02 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/18763726-8afe-4ab1-b78d-0bbe5ceda313">
+
+The manual is a bad idea, and resource estimation is also a hard problem. Autoscaling => solves unpredictable traffic spikes.
+How to autoscale ?
+
+<img width="600" alt="Screen Shot 2023-06-24 at 9 10 12 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/b9851c17-aa16-4254-988a-da87289470ba">
+
+Autoscaling system design of a web-service ?
+
+Notes: here load-balancer is also used for service-discovery=> how to know about the new servers created by the provisioning system.
+
+<img width="700" alt="Screen Shot 2023-06-24 at 9 18 12 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/dbed84fc-d87f-4957-8582-97e7aa5638f9">
+
+
+
+
+
+
+### How to protech clients from servers ?
+
+
+
+
+
 
 
 
