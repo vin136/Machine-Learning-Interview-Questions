@@ -429,6 +429,14 @@ Circuit breaker: count #retries and then stop after a threshold.
 
 
 
+# System Design examples
+
+General model for scaling a system
+
+1.
+
+## Design a Monitoring system
+
 
 
 
