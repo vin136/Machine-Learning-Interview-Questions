@@ -333,6 +333,19 @@ Eg:
 
 ### How to build efficient communication in distributed systems (Throughput)
 
+How to choose a protocol?
+
+TCP: 3-way handshake, reliable,ordered,connection-oriented. Client can establish hundreds of TCP connections. Consume resourcers
+
+HTTP: connection(TCP) per request.
+
+UDP: NO-connection,no-handshaking. 
+ - very fast but not reliable.
+
+
+
+
+
 ### How to deliver data quickly ?
 
 1. Batching => instead of making multiple http requests make a single one with multiple requests
@@ -348,7 +361,27 @@ Think about compression in databases(say configure cassandra db for compression)
 
 ### How to deliver data at large scale ?
 
+1. Partitioning
+  Used in kafka and other msg queues, also in databases.
+How to partition in databases ?
 
+<img width="600" alt="Screen Shot 2023-06-24 at 9 49 04 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/8f1c0099-ea7c-4055-8ffe-e3d2bf0c5d29">
+
+How to partition ?
+
+Range-based
+
+<img width="600" alt="Screen Shot 2023-06-24 at 9 55 22 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/c808d8b0-58b6-4ea7-8d81-87d7b8c60ba4">
+
+Hash based
+<img width="600" alt="Screen Shot 2023-06-24 at 9 56 35 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/979dcccc-4795-4c1c-b03c-df2518bcc749">
+
+How to rebalance the shards ? => many ways.
+
+
+
+
+ 
 
 ### How to protect servers from clients ?[System Overload]
 <img width="600" alt="Screen Shot 2023-06-24 at 9 07 02 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/18763726-8afe-4ab1-b78d-0bbe5ceda313">
@@ -364,12 +397,39 @@ Notes: here load-balancer is also used for service-discovery=> how to know about
 
 <img width="700" alt="Screen Shot 2023-06-24 at 9 18 12 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/dbed84fc-d87f-4957-8582-97e7aa5638f9">
 
+Load Shedding and rate-liming : Auto-scaling takes time thus still server can get overloaded.
+
+Load Shedding: when request vol reaches beyond a certain threshold just ignore/drop the incoming requests.
+
+<img width="431" alt="Screen Shot 2023-06-24 at 9 21 26 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/1cadcd29-850f-4d6a-b3b4-43e8d3aefb36">
+
+
+Load testing is used to determine thershold for load-shedding and also thread tuning.
+
+<img width="600" alt="Screen Shot 2023-06-24 at 9 25 45 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/3ba552f4-5694-4f7e-b657-8f11bc938848">
+
+<img width="600" alt="Screen Shot 2023-06-24 at 9 25 11 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/0f9038a8-34e2-45ac-921f-e8a1daa28bba">
+
+
+Rate-Limiting: how to fairly handle various client requests. under load-shedding the client that sends lot of queries get's an upper hand in processing.
+<img width="374" alt="Screen Shot 2023-06-24 at 9 32 24 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/908162fc-2a90-4b83-b4f9-71b6fdb81594">
+
+
+
+### How to protect clients from servers?
+
+How does the client deal with exceptions from servers after load-shedding/rate-limited ?
+
+Client thinks that prob is transient but what if server has trouble autoscaling and may take a lot of time. Intelligent retries doesn't help and client may exhaust it's resources via retries ?
+
+Circuit breaker: count #retries and then stop after a threshold.
+
+<img width="478" alt="Screen Shot 2023-06-24 at 9 43 23 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e986a081-c5d7-4ded-9d00-c059884e6961">
 
 
 
 
 
-### How to protech clients from servers ?
 
 
 
