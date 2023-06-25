@@ -837,6 +837,35 @@ Functional
 
 System behaviour
 
+# Design dist-queue
+
+**High-level comp**
+
+
+<img width="838" alt="Screen Shot 2023-06-25 at 1 32 36 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/f509fa9a-811b-46f1-a2b7-032753250e72">
+
+Why load-balancer achiese throughput and reliability ?
+
+<img width="894" alt="Screen Shot 2023-06-25 at 1 34 37 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/046c7845-a471-4724-a2d6-5f8c39ff157a">
+
+
+
+Why Front-end service ?
+
+<img width="1384" alt="Screen Shot 2023-06-25 at 1 31 21 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/3c0f7deb-04d0-49ec-b9d0-b954a86fea06">
+
+Meta-data-service 
+
+<img width="1320" alt="Screen Shot 2023-06-25 at 1 39 23 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ec6dc75b-e553-45cf-9f4a-daa3be52d746">
+
+Backend service ?
+
+<img width="600" alt="Screen Shot 2023-06-25 at 1 44 08 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/59440fa5-7479-47df-8d53-517a6cd3cb7a">
+<img width="600" alt="Screen Shot 2023-06-25 at 1 42 27 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/9fb19e70-ecad-477c-964a-ce9f3949a35a">
+
+
+
+
 
 
 
