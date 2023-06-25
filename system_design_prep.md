@@ -454,11 +454,57 @@ sol : Auditing system
 
 General model for scaling a system
 
-1.
 
-## Design a Monitoring system
+Notes: Each web server in the cluster can access state data from databases. This is called the stateless web tier. removing state info from the server. In figure `NoSQL` DB is used for state-management.
 
+The servers should be spread across the globe and in different data-centers. To further scale our system, we need to decouple different components of the system so they can be scaled independently=> Messaging queue .
 
+`simple`
+
+<img width="703" alt="Screen Shot 2023-06-25 at 8 45 07 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/2fba6119-5659-4941-865a-4e0c5c930980">
+
+`final`
+
+<img width="477" alt="Screen Shot 2023-06-25 at 8 54 58 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/be46e063-991e-4e4a-8d14-4dde3122746a">
+
+## Design Twitter
+
+Functional Requirements:
+1. Follow each other and create tweets(can have images,vid etc)
+2. Viewing a tweet-feed (we'll just see people that we follow)
+
+Non-functional
+1. How many tweet reads per-day => 200m/Dau,each reads 100/day,size of each tweet => 1MB(On avg) => overall we are reading 20peta-byte
+2. How many writes => much less than reads
+3. How many follower can a user have => some can have huge
+
+Where do we store data ? => relational vs non-relational
+first there is some relationships going on, followers and followers, though scaling is an issue., but we can also have a graphDB.
+
+<img width="200" alt="Screen Shot 2023-06-25 at 9 09 36 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ecca4d30-8fec-4b39-90d5-dcb9776d739d">
+
+Above image talks about reading n showing tweets. now let's talk about the interface/API
+
+- createtweet(text,media,uid)
+- getfeed(uid)(need authentication here)
+- follow(uid,oid)
+
+How are we storing data ?
+we'll have two tables , 
+ - tweet,
+ - follow(just two columns,index by follower)
+
+Now we are hitting a lot of reads => leader-follower replication
+
+For reads how do we shard ? maybe user-id, tweet-id will be a bad thing. 
+
+So all the tweets corresponding to  a user is in a shard, and also in follow tabel we have all the follower-followee list in a single shard. Now to retrieve the actual feed, we need to read tweets from multiple shard and then sort them based on time-stamp.
+
+Now we also want to order the tweets. Should i fetch all the tweets or based on user scrolling ?
+
+First LRU cache helps to have some popular tweets in cache but for a specific user we can't expect to have his feeds in cache. Can we pre-generate the feed for all users ?
+
+<img width="600" alt="Screen Shot 2023-06-25 at 9 25 37 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/d64eec7b-de90-4d43-b8e9-aee77b228054">
 
 
 
