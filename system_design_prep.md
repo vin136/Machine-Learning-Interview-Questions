@@ -661,6 +661,7 @@ Data-aggregation:
 
 <img width="600" alt="Screen Shot 2023-06-25 at 6 05 24 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/82d16013-df73-436a-bb9f-4b8a8e9c7f47">
 
+Eg: Push -based => rabbitMQ, Pull based => Kafka.
 
 Should the processing service pull-events or get events pushed. Pull is better as there will be other temp storage in case of service failure.(reliability)
 
