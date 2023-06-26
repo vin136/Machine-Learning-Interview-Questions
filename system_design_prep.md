@@ -233,6 +233,7 @@ Some basic tests on models like
 # System Design
 
 ## Short list of tools
+----------------------------------
 
 API GATEWAY: LOOSE COUPLING WHEN LOT OF SERVICES, REVERSE-PROXY, Authentication, and caching on the client side.
 
@@ -240,20 +241,35 @@ Databases: STORE DATA + sharding and replication.
 
 Configuration service : eg:zookeeper., store-new shards info as they are added.
 
-Load Balancer: send load among diff servers.
+Load Balancer: send load among diff servers., can do batching(pack multiple requests)
+
+CDN : fast serving. spread across the globe.
+
+Partitioning and caching, push vs pull.
 
 Message-queues: Decouple consumer and producer.
 
 For real time aggregation:
 
-Processing service:
+Processing service: unpacks batched msgs and does caching. and sends to respective shards. also shard level info will be there.(service discovery)
 
-msg queue itself is sharded.
+since msg queue itself is sharded.
 
-Partition service => binarize, caching, packing multipe msgs into single request
+Partition consumer => deserialize and take individual msgs.
 
-Partition consumer => deserialize and take individual msgs
+Deduplication cache => identify duplicate msgs.
 
+Aggregator(Apache flink) => read msg and aggregate
+
+push these to an internal queue => why (decoupling, multithreading)
+
+Database Writer => take msgs and write to db. what if db is busy => Dead-letter queue
+
+Embedded DB => IF not all info needed and to avoid network latency.
+
+state store => store state, though replication in partition-queue,difficult to retriev state, thus store the state.
+
+--------------------------
 
 
 
