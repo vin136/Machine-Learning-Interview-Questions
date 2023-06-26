@@ -14,6 +14,89 @@ Questions ?
 1. what is one problem that the team is facing now and would delighted if i could add some value/improve ?
 2. I read the company blog, and it talks Headline optimization,that implies you did A/B testing for the company. Ultimately users want actionable steps,not just analytics,this implies full blown ml models and optimizing on them. How far the product offerings go in this direction ? so it boils down to having a ton of recommender systems,(eg: better ad placement personalization ), how to you manage all these ?
 
+## Technical Problems
+
+**Testing ML models**
+
+# Testing
+
+Unit tests: tests on individual components that each have a single responsibility (ex. function that filters a list).
+
+Integration tests: tests on the combined functionality of individual components (ex. data processing).
+
+Regression tests: tests based on errors we've seen before to ensure new changes don't reintroduce them.
+
+ML systems can run to completion without throwing any exceptions / errors but can produce incorrect systems
+`Unit and integration testing of all the preprocessing code` :
+
+Testing framework - Pytest
+
+```
+# tests/food/test_fruits.py
+def test_is_crisp():
+    assert is_crisp(fruit="apple")
+    assert is_crisp(fruit="Apple")
+    assert not is_crisp(fruit="orange")
+    with pytest.raises(ValueError):
+        is_crisp(fruit=None)
+        is_crisp(fruit="pear")
+```
+Can parametrize to avoid redundancy
+
+```
+@pytest.mark.parametrize(
+    "fruit, crisp",
+    [
+        ("apple", True),
+        ("Apple", True),
+        ("orange", False),
+    ],
+)
+def test_is_crisp_parametrize(fruit, crisp):
+    assert is_crisp(fruit=fruit) == crisp
+
+```
+
+
+`Testing the Data`
+
+We used to get data from the client and someone else is responsible for cleaning and uploading it to S3. Now the thing in machine learning is it fails silently.
+
+Test the column types,uniqueness, distribution ranges, missingness etc. Tool: `GreatExpectations`
+```
+# Unique values
+df.expect_column_values_to_be_unique(column="id")
+```
+
+`Testing Models`
+
+Some basic tests on models like
+
+- dec loss after one batch
+- overfit on a batch
+
+  `Behavioral testing`
+
+  Imagine you've updated a sentiment analysis system you've trained and tested on you. Now in the same sentence you replace with synonyms, output label shouldn't change `invariance testing`. Now you might have `directional expectations`. For us we introduced noise and checked action consistency.
+
+**Improving latency**
+
+One technical problem you solved:
+use profilers: line_profiler,memory_profiler etc (eg: $ python -m cProfile -o profile.stats julia1.py)
+step 1: algorithmic inefficiencies
+step 2: using multiple libraries. are you using them well ?
+python level optimizations: use generators or lazy evaluation, use tuples for static arrays and lists for dynamic(more memory is initialized)
+eg: find how many of the first 100 Fibonacci numbers are div by 3
+tuple is cached, not garbage collected immediately.=> creating tuple is 5 times faster than a list.
+
+numpy: don't create copies, use views.
+---big effects---
+for memory: we often don't need float64 for all features. if we can use say float16=> 64gb ram to 16gb ram
+since garbage collected better to del after the use of large variables
+reduce network size, distillation.
+Last resort => multiprocessing module. (creating indicators, used joblib to create them in parallel)
+cpu-bound (only multiprocessing can help)
+
 
 
 
