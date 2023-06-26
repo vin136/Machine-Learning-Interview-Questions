@@ -232,6 +232,15 @@ Some basic tests on models like
 
 # System Design
 
+## Short list of tools
+
+API GATEWAY: LOOSE COUPLING WHEN LOT OF SERVICES, REVERSE-PROXY, Authentication, and caching on the client side.
+
+Databases: STORE DATA + sharding and replication. 
+
+Configuration service : eg:zookeeper.
+
+
 ## Core Concepts
 
 **General Tools**
