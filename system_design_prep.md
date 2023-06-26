@@ -238,7 +238,13 @@ API GATEWAY: LOOSE COUPLING WHEN LOT OF SERVICES, REVERSE-PROXY, Authentication,
 
 Databases: STORE DATA + sharding and replication. 
 
-Configuration service : eg:zookeeper.
+Configuration service : eg:zookeeper., store-new shards info as they are added.
+
+Load Balancer: send load among diff servers.
+
+Message-queues: Decouple consumer and producer.
+
+
 
 
 ## Core Concepts
