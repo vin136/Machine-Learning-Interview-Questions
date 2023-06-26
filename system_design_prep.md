@@ -237,7 +237,9 @@ Some basic tests on models like
 
 API GATEWAY: LOOSE COUPLING WHEN LOT OF SERVICES, REVERSE-PROXY, Authentication, and caching on the client side.
 
-Databases: STORE DATA + sharding and replication. 
+Databases: STORE DATA + sharding and replication.  Also indexing.
+
+When sharding use cluster-proxy(to know which shard has what info) + use shard-proxy infront of each shard (collect query metrics,stop long running queries etc.)
 
 Configuration service : eg:zookeeper., store-new shards info as they are added.
 
@@ -270,6 +272,28 @@ Embedded DB => IF not all info needed and to avoid network latency.
 state store => store state, though replication in partition-queue,difficult to retriev state, thus store the state.
 
 --------------------------
+Notes: 
+For client side patters like timeouts,retries,circuit-breaker pattern
+Load balancer : NGINX, AWS ELB
+Messaging systems: kafka / kinesis
+Data processing: to process events and aggregate them in memory (apache spark/flink)
+Storage: Apache cassandra
+Store raw events : any cloud data-warehouse or apache hadoop
+Other tools
+vitess=> large cluster mysql instances
+distributed cache=> Redis
+Manage server discovery => Zookeeper.
+Monitoring => AWS Cloudwatch
+
+How to identify bottlenecks => Load testing(test under specific stress), stress-testing(identify breaking point), tool: apache jmeter
+Health monitoring => metrics and dashboards (latency,traffic,errors)
+Testing => how to ensure your system is doing correctly say count likes on youtube ?
+sol : Auditing system 
+  - weak audit system: generate requests for a while and count if it's as expected.
+  - strong audit system : But still we miss rare events ? => one thing people do is they have two systems say hadoop with mapreduce vs streaming approach. (called lambda architecture).
+
+-----------------------------
+
 
 
 
@@ -468,27 +492,6 @@ Circuit breaker: count #retries and then stop after a threshold.
 <img width="478" alt="Screen Shot 2023-06-24 at 9 43 23 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e986a081-c5d7-4ded-9d00-c059884e6961">
 
 ### Tools
-
-Notes: 
-For client side patters like timeouts,retries,circuit-breaker pattern
-Load balancer : NGINX, AWS ELB
-Messaging systems: kafka / kinesis
-Data processing: to process events and aggregate them in memory (apache spark/flink)
-Storage: Apache cassandra
-Store raw events : any cloud data-warehouse or apache hadoop
-Other tools
-vitess=> large cluster mysql instances
-distributed cache=> Redis
-Manage server discovery => Zookeeper.
-Monitoring => AWS Cloudwatch
-
-How to identify bottlenecks => Load testing(test under specific stress), stress-testing(identify breaking point), tool: apache jmeter
-Health monitoring => metrics and dashboards (latency,traffic,errors)
-Testing => how to ensure your system is doing correctly say count likes on youtube ?
-sol : Auditing system 
-  - weak audit system: generate requests for a while and count if it's as expected.
-  - strong audit system : But still we miss rare events ? => one thing people do is they have two systems say hadoop with mapreduce vs streaming approach. (called lambda architecture).
-
 
 
 # System Design examples
