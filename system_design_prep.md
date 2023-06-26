@@ -244,6 +244,16 @@ Load Balancer: send load among diff servers.
 
 Message-queues: Decouple consumer and producer.
 
+For real time aggregation:
+
+Processing service:
+
+msg queue itself is sharded.
+
+Partition service => binarize, caching, packing multipe msgs into single request
+
+Partition consumer => deserialize and take individual msgs
+
 
 
 
