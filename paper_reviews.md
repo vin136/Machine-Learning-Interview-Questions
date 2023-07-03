@@ -36,3 +36,17 @@ repair kit might not be relevant after this weekend’s project
 find what they need. But when intent is unclear
 or uncertain, discovery and serendipity should
 be the goal.
+
+
+Pattern recognition 
+
+
+Decision Making
+
+
+Before only record companies
+
+Music markets => have a consumer-producer market(no middleman). A creator should have a transparent data(eg: show where they are being listened,they can go down make a show there) and in this sense AI will create a market. The value of music is also in a personal connection = young kid wears a t-shirt of their favourite artist.
+
+
+
