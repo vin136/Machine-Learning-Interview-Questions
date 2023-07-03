@@ -50,7 +50,28 @@ Music markets => have a consumer-producer market(no middleman). A creator should
 
 What's the bottleneck ?
 
-Well it's not top-down. Companies can't artificially create it. It's the advertising model that's bad, make the service free and get ads. But what about producer - consumer relationship.
+Well it's not top-down. Companies can't artificially create it. It's the advertising model that's bad, make the service free and get ads. But what about producer - consumer relationship
+
+## Imagine going to a doctor:
+
+1. prob of heart-attack = 0.7
+
+was it trained on people lk me, recently or 5 yrs ago, is the machine same or not ?
+
+Doctors can all do that but they can do what if experiments ? Poor at uncertainty quantification of this rich kind.
+
+after doctor asking questions => Now you might recall that you've asthma as a child or your parent has heart disease. Now they gauge in counterfactuals, a good doctor might have dialogue (medical reasoning). Real world decision making is always of this kind.
+
+
+And in life we are making lot of interlaced decisions. and your decisions are affecting other peoples decisions (economics)
+
+Recommending books => easy (no supply demand issues, can recommend to lot of people at the same time)
+
+Now is it ok to recommend the same restaurant to lot of people ?, streets to drivers etc.
+
+It's not just a load-balancing problem => there should be auction.
+
+Transparent trade-off's on fairness, privacy and social good.
 
 
 
