@@ -123,7 +123,7 @@ Can also be interpreted as `minimizing hinge loss` along with l2 normalization o
 
 `C` => 1/c*(regularization). Inc C => dec regularization,makes the model overfit, dec C => more regularization
 
-`sigma` => controls the peakedness of gaussian kernel. small `sigma`=> more peaked => overfits.
+`sigma` => controls the peakedness of the Gaussian kernel. small `sigma`=> more peaked => overfits.
 
 The SMO algorithm => train complexity O(n^2).
 
@@ -132,6 +132,37 @@ The SMO algorithm => train complexity O(n^2).
    
     
 4. Trees, Random Forests, Boosting
+   
+   Bootstrap-aggregation => almost same bias and reduce variance (random forest => bootstrap agg + column sampling)
+   Objective => Classificaton(entropy or gini-impurity (1-sum(p_i^2). Tries to make each leaf pure. Regression(MSE/MAE etc)
+
+   Feature importance => total reduction or gain at each node(`con`: tends to give high values to features with high-cardinality), Permutation feature importance (slow but less biased).
+
+5. Dimensionality reduction
+
+   Core Idea in SVD : Any matrix can be decomposed into sum of rank one matrices.
+   
+<img width="810" alt="Screen Shot 2023-07-07 at 4 05 44 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/32b9083f-b46b-49b9-a2d7-433c2ef2aa50">
+
+<img width="600" alt="Screen Shot 2023-07-07 at 4 07 33 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/0c1b8c9d-7569-4848-b9b4-1008ca6136a7">
+
+<img width="600" alt="Screen Shot 2023-07-07 at 4 08 08 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/83ba6001-3d20-468a-9033-eaad3d8174a4">
+
+PCA
+
+- Find directions of maximum variance
+- Preserve pair-wise distances
+
+
+<img width="600" alt="Screen Shot 2023-07-07 at 4 10 07 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/39baf9bb-6533-4ee0-a099-e2ae79e3cf55">
+
+   
+
+   
+
+   
+
+7. Clustering
 
    
        
