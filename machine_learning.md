@@ -232,7 +232,7 @@ Plot silhouette coefficient for diff k, at pick the one at the elbow.(at the `ki
 
 # Deep Learning
 
-Revise [1](https://jupyter.cs.rutgers.edu/user/vk405/lab/tree/Projects/ML-review/nbs/DeepLearning.ipynb), [optimizers](Deep_LEARNING_NOTES)
+Revise [1](https://jupyter.cs.rutgers.edu/user/vk405/lab/tree/Projects/ML-review/nbs/DeepLearning.ipynb), [optimizers](https://github.com/vin136/Machine-Learning-Interview-Questions/blob/main/nbs/Deep_LEARNING_NOTES.ipynb)
 
 
 
