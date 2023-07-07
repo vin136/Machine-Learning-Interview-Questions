@@ -66,7 +66,19 @@ But it's best to calculate metrics per class and set thresholds.
     - Cost-Sensitive learning: If we have a cost-matrix $C_{ij}$,cost of classifying `i` as `j`,our loss is weighted avg.(weighted by the clsf's predicted probability)
     - class-balanced loss: reweigh the loss proportional to the `inv of #samples in that class`
     - Focal loss: teach the model to focus more on difficult classes
-      
+
+**What is Bias and Variance tradeoff ?**
+
+It's an approach for capturing the generalizability of the algorithm. Another alternative would be VC analysis.
+
+Bias => captures how well we can approximate the target function with your model(hypothesis) class
+
+Variance => Captures how hard it's to zoom in on the best model or weights. How much does your model change between different samples from the population?
+
+Thus there is a trade-off, if we start with a complex model class, we have low bias but it's hard to pick or zoom in the optimal model due to variance.
+
+In the squared error setting it decomposes nicely into (bias^2 + variance + error).
+
    
 # ML Algorithms(classical)
 
@@ -86,6 +98,8 @@ SVD => The beta vector for SVD is typically sparse thus need not store all the d
 1. Logistic regression
    `complexity`=> train time O(nd).
    `Background`: Minimize the log-likelihood of the Bernoulli model. It's convenient as the loss is convex.
+   
+   In the underlying model, we assume random noise whose CDF is the logistic distribution. By varying this assumption we can get various models `GLM`. Also has max-entropy interpretation.
 
    **Your model is not performing well, what will you do ?**
    ans:
@@ -113,11 +127,11 @@ Can also be interpreted as `minimizing hinge loss` along with l2 normalization o
 
 The SMO algorithm => train complexity O(n^2).
 
-4. Linear Regression
+3. Linear Regression
 
    
     
-2. Trees, Random Forests, Boosting
+4. Trees, Random Forests, Boosting
 
    
        
