@@ -134,9 +134,21 @@ Can also be interpreted as `minimizing hinge loss` along with l2 normalization o
 
 The SMO algorithm => train complexity O(n^2).
 
-3. Linear Regression
+3. Linear Regression: Orthogonal projection of Y onto the column space of X.
+   Note: if p>n or if columns or collinear => not invertible,no X.tX=>not invertible.
 
-   
+   Ridge-regression
+   <img width="600" alt="Screen Shot 2023-07-07 at 6 01 19 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/34a30893-cb8b-47ec-8af5-4cf5a92f46a0">
+
+Bias-variance tradeoff
+
+<img width="600" alt="Screen Shot 2023-07-07 at 6 03 57 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/c3e32bdc-1dc8-40dc-b18b-87999832e8d2">
+
+
+Robust Regression: Can model the noise as student-t or Laplace dist, thus accounting for outliers.
+
+   <img width="600" alt="Screen Shot 2023-07-07 at 5 54 12 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/3eeb53c0-e565-44d5-b5e9-f01acac4d17d">
+
     
 4. Trees, Random Forests, Boosting
    
