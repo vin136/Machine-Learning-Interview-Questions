@@ -70,6 +70,13 @@ But it's best to calculate metrics per class and set thresholds.
    
 # ML Algorithms(classical)
 
+Classification
+
+Multi-class => Softmax classification
+
+Multi-label => output label is a binary vector (1,0,0..). Can be treated as a modified version of logistic regression $p(y|x,\theta) = \pi_{c=1-c}Ber(y_{c}|w,x)$.
+
+
 1. Logistic regression
    `Background`: Minimize the log-likelihood of the Bernoulli model. It's convenient as the loss is convex.
 
@@ -83,6 +90,10 @@ But it's best to calculate metrics per class and set thresholds.
      ans:
      - Fit and remove ($W^{T}x$ gives dist from hyperplane) iteratively.
      - Model noise: mixture model => label is sampled from a random-model(Bernoulli) or from a conditional model(logistic regression)
+    
+2. Trees, Random Forests , Boosting
+
+   
        
 
 
