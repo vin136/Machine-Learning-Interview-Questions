@@ -40,6 +40,7 @@ But it's best to calculate metrics per class and set thresholds.
 
 
 
+
 **1. How to deal with class imbalance ?**
 
 `Why it's Bad ?`
@@ -79,7 +80,12 @@ Thus there is a trade-off, if we start with a complex model class, we have low b
 
 In the squared error setting it decomposes nicely into (bias^2 + variance + error).
 
-   
+
+**Diagnostics**
+
+
+
+
 # ML Algorithms(classical)
 
 Classification
@@ -224,10 +230,9 @@ Plot silhouette coefficient for diff k, at pick the one at the elbow.(at the `ki
    
    
 
+# Deep Learning
 
-
-
-
+Revise [1](https://jupyter.cs.rutgers.edu/user/vk405/lab/tree/Projects/ML-review/nbs/DeepLearning.ipynb), [optimizers](Deep_LEARNING_NOTES)
 
 
 
