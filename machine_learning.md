@@ -94,6 +94,7 @@ General purpose technique to transform the problem whose complexity depends on #
 
 Linear regression can be kernelized. => here we store beta's (#samples).
 SVD => The beta vector for SVD is typically sparse thus need not store all the data points. Thus quite effficient to kernalize SVD.
+PCA => can also be kernelized.
 
 1. Logistic regression
    `complexity`=> train time O(nd).
@@ -138,7 +139,15 @@ The SMO algorithm => train complexity O(n^2).
 
    Feature importance => total reduction or gain at each node(`con`: tends to give high values to features with high-cardinality), Permutation feature importance (slow but less biased).
 
-5. Dimensionality reduction
+   **Boosting**
+   
+
+6. Dimensionality reduction
+   
+   `USES`
+   - Can detect possible clusters
+   - Remove noise or highlight potential outliers
+   - As a preprocessing step => clustering, classification/regression
 
    Core Idea in SVD : Any matrix can be decomposed into sum of rank one matrices.
    
@@ -157,19 +166,61 @@ PCA
 <img width="600" alt="Screen Shot 2023-07-07 at 4 10 07 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/39baf9bb-6533-4ee0-a099-e2ae79e3cf55">
 
    
+**How to pick the dimensionality in PCA**
 
-   
+ELBOW-METHOD, on explained variance.
 
+Can't pick `dim` that minimizes the reconstruction error on the validation set as that would lead to using all the dimensions.
    
 
 7. Clustering
 
-   
+Model-free Methods:
+
+
+K-means:
+
+**Assumptions**
+
+- All clusters of same size,variance
+- Also assume convex shapes
+- All clusters have same prior probability
+- Distances should be given.
+
+Objective: 
+- Minimize the within-cluster sum of squares from the center.
+- (OR) Minimize paired mutual distances between points in a cluster.
+
+Tries to jointly find both the cluster centers and cluster assignment and thus can't be exactly optimized. Lyod's algorithm gives an approx solution.
+
+   <img width="600" alt="Screen Shot 2023-07-07 at 4 21 34 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e0204c23-76c8-41d8-8c4e-bc85f5c7f50d">
+
+In practice we use `kmeans++` that assigns clusters as far as possible. This gives a bound on how worse the algoritm can be. Lyods' can give arbitrary bad clusters.
+
        
+Gaussian Mixture model:
 
+Generative model
 
+- Takes into account of the variability of each cluster,thus instead of computing the dist,  we scale it down by the variance
+- Prior probability takes into account of the cluster size, thus a point is not just assigned to closest one.
+- A point is assigned to all clusters given by distribution.
 
+  Optimized By EM
 
+We can pick the k that maximizes the log-likelihood of the data+ penalizes for the complexity of the model.
+
+BIC(K) = log p(D|θˆk) − D_K log(N), (D_K=> #PARAMS in the model)
+
+** How to choose K in k-means ?**
+
+NOTE: WE CAN'T JUST USE validation, as just using more k also decreases validation loss inevitably.
+
+**Heuristic method**
+
+Plot silhouette coefficient for diff k, at pick the one at the elbow.(at the `kink`)
+
+`silhouette coefficient of an instance i to be sc(i) = (bi − ai)/ max(ai, bi), where ai is the mean distance to the other instances in cluster ki = argmink ||μk − xi||, and bi is the mean distance to the other instances in the next closest cluster, ki′ = argmink̸=ki ||μk − xi||. Thus ai is a measure of compactness of i’s cluster, and bi is a measure of distance between the clusters. The silhouette coefficient varies from -1 to +1.`
    
    
 
