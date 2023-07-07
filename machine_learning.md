@@ -66,6 +66,29 @@ But it's best to calculate metrics per class and set thresholds.
     - Cost-Sensitive learning: If we have a cost-matrix $C_{ij}$,cost of classifying `i` as `j`,our loss is weighted avg.(weighted by the clsf's predicted probability)
     - class-balanced loss: reweigh the loss proportional to the `inv of #samples in that class`
     - Focal loss: teach the model to focus more on difficult classes
+      
+   
+# ML Algorithms(classical)
+
+1. Logistic regression
+   `Background`: Minimize the log-likelihood of the Bernoulli model. It's convenient as the loss is convex.
+
+   **Your model is not performing well, what will you do ?**
+   ans:
+   - L1/L2 regularization (Regularization as a MAP estimate with L2: gaussian prior)
+   - Check if features are normalized and are on the same scale.(good for optimizers and also when applying regularization, we implicitly assume all feats to be on the same scale).
+   - Few Outliers might be affecting the decision surface unduly. eg: maybe due to label noise(some points are mislabeled)
+  
+     **How to deal with outliers in case of logistic regression ?**
+     ans:
+     - Fit and remove ($W^{T}x$ gives dist from hyperplane) iteratively.
+     - Model noise: mixture model => label is sampled from a random-model(Bernoulli) or from a conditional model(logistic regression)
+       
+
+
+
+
+   
    
 
 
