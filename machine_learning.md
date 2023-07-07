@@ -76,14 +76,21 @@ Multi-class => Softmax classification
 
 Multi-label => output label is a binary vector (1,0,0..). Can be treated as a modified version of logistic regression $p(y|x,\theta) = \pi_{c=1-c}Ber(y_{c}|w,x)$.
 
+`Kernel Trick`:
+
+General purpose technique to transform the problem whose complexity depends on #features to #data-points. Whenever the optimization problem can be reformulated with dot-product between data-points we can possibly apply kernel trick. Useful if the feature space is high/infinite dimensional.
+
+Linear regression can be kernelized. => here we store beta's (#samples).
+SVD => The beta vector for SVD is typically sparse thus need not store all the data points. Thus quite effficient to kernalize SVD.
 
 1. Logistic regression
+   `complexity`=> train time O(nd).
    `Background`: Minimize the log-likelihood of the Bernoulli model. It's convenient as the loss is convex.
 
    **Your model is not performing well, what will you do ?**
    ans:
    - L1/L2 regularization (Regularization as a MAP estimate with L2: gaussian prior)
-   - Check if features are normalized and are on the same scale.(good for optimizers and also when applying regularization, we implicitly assume all feats to be on the same scale).
+   - Check if features are normalized and are on the same scale. (good for optimizers and also when applying regularization, we implicitly assume all feats to be on the same scale).
    - Few Outliers might be affecting the decision surface unduly. eg: maybe due to label noise(some points are mislabeled)
   
      **How to deal with outliers in case of logistic regression ?**
@@ -91,7 +98,26 @@ Multi-label => output label is a binary vector (1,0,0..). Can be treated as a mo
      - Fit and remove ($W^{T}x$ gives dist from hyperplane) iteratively.
      - Model noise: mixture model => label is sampled from a random-model(Bernoulli) or from a conditional model(logistic regression)
     
-2. Trees, Random Forests , Boosting
+2. SVM
+
+margin = sum of the distance between the closest +ve and -ve points from the decision boundary.
+Objective = maximize the margin, to account for imperfect classification we introduce slack variables. Constrained optimization problem => projected gradient descent.
+
+Can also be interpreted as `minimizing hinge loss` along with l2 normalization on weights.
+
+`DUAL FORM`: In dual form we can convert it to maximization problem(Lagrange multipliers) and note that now we can kernalize the model. Only relies on dot-products between points.
+
+`C` => 1/c*(regularization). Inc C => dec regularization,makes the model overfit, dec C => more regularization
+
+`sigma` => controls the peakedness of gaussian kernel. small `sigma`=> more peaked => overfits.
+
+The SMO algorithm => train complexity O(n^2).
+
+4. Linear Regression
+
+   
+    
+2. Trees, Random Forests, Boosting
 
    
        
