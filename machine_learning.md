@@ -80,6 +80,11 @@ Thus there is a trade-off, if we start with a complex model class, we have low b
 
 In the squared error setting it decomposes nicely into (bias^2 + variance + error).
 
+**How do you handle Categorical Variables ?**
+
+
+**How do you handle missing values?**
+
 
 **Diagnostics**
 
