@@ -40,7 +40,7 @@ But it's best to calculate metrics per class and set thresholds.
 
 
 
-1. How to deal with class imbalance ?
+**1. How to deal with class imbalance ?**
 
 `Why it's Bad ?`
 
