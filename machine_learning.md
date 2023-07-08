@@ -85,6 +85,10 @@ In the squared error setting it decomposes nicely into (bias^2 + variance + erro
 
 **How do you handle missing values?**
 
+Try your best to identify the cause of missingness
+
+MC
+
 
 **Diagnostics**
 
