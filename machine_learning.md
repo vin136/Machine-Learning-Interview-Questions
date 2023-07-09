@@ -34,11 +34,16 @@ But it's best to calculate metrics per class and set thresholds.
 2. Recommender Systems metrics
 
 
-------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Real-world ML Probs/Solutions
 
+** Some problem representation patterns**
 
+1. Reframing regression to the classification problem
+   - Say we know that the variance of continuous variable increases with value => we can break it into bins and capture the uncertainty and better model without going for complex models(say quantile regression)
+   - Framing as multi-task learning => less overfitting + rich output information. eg: instead of just predicting if a user clicks on  a movie or not predict watch-time etc.
+   
 
 
 **1. How to deal with class imbalance ?**
@@ -81,6 +86,56 @@ Thus there is a trade-off, if we start with a complex model class, we have low b
 In the squared error setting it decomposes nicely into (bias^2 + variance + error).
 
 **How do you handle Categorical Variables ?**
+
+- One hot encoding: to avoid interpolation (if we naively represent each cat by a number)
+- Some times we might create new categorical variables, say weekend or not.
+- We can do `feature-cross`, to handle high-cardinality can use embeddings.(lk hour and day-week + learned embeddings)
+
+  What if the input is array of categories and the size is not constant ?
+
+  `sol:` Get vocabulary and represent relative frequencies like TF-IDF.
+
+What if categories are not static , eg: new brands keeps on adding onto amazon ?
+
+
+`sol`: 
+
+**main idea**: Hashed feature set: incomplete vocabulary, model size due to cardinality, and cold start. It does so by grouping the categorical features and accepting the trade-off of collisions in the data representation.
+
+1. Create a drop-in category `Unknown` during training for all the less frequent brands.
+2. other approach is hashing. (locality-sensitive hashing function where similar categories (such as websites with similar names) are hashed into values close to each other.)
+
+When hashing to avoid information loss add additional aggregate features for that feature.
+
+How to ensure the closeness/similarity btw categories is accurately represented ? (one-hot doesn't take this into account)
+
+Embeddings : gives good(learned) representations while handling high cardinality issue. If lack of labeled data we can train it in unsupervised(auto-encoders)(generate labels from the dataset)  way.
+
+Positional embeddings is a rich study of how to give discrete information in an efficient way.
+
+
+
+**Why to scale data and what are common ways ?**
+
+scaling btw [-1,1]
+   - optimizers(sgd) rely on weight update and their stability is best in this range.,
+   - we have highest numerical precision
+     
+     
+Common ways for continuous data 
+
+Linear scaling (Min-max,z-score(not constrained),clipping n percentiles)
+
+Non-linear scaling: ML models need dense distributions, sufficient values from each range, else overfitting or stuck in local minima. Thus skewed dist are a problem.
+
+1. We sometimes take Log,saw working with skewed datasets, (eg: #pageviews, simple normalization might skew data too much) => take log or other non-linear transformation.
+2. Box-cox transform : tries to keed variance same across all ranges
+3. Histogram equalization: Bin your values such that you have near uniform distribution.
+
+   In a way we loose information in all these approaches.
+
+   
+
 
 
 **How do you handle missing values?**
