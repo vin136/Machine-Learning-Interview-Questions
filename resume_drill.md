@@ -297,7 +297,7 @@ Self attention between video frames + cross attention .
 We want a model that connects images and text really well. Data is easy to get,people put photos and give labels is social media.
 
 - Predicting the text from photo in language modeling isn't a great idea
-- use any image and text encoder. Now we have a constrastive objective.
+- use any image and text encoder. Now we have a constrastive objective.(softmax along the row and column)
 
 Needs large enough minibatch.
 
