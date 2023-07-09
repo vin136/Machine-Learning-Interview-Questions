@@ -93,7 +93,34 @@ MC
 **Diagnostics**
 
 
+Identify issues and do appropriate actions:
 
+Performance breakdown
+
+Gap btw Human-level and train => proxy for Bias
+train and valid => proxy for variance
+
+Gap valid- test => maybe dist.mismatch. Generally Valid/train data comes from different process, say some open-source data and your test set a the best reflection of the deployment scenario.(due to cost)
+
+Gap btw test-deployment => generally due to overfitting on test-set. (checked multiple times)
+
+`perf-berakdown`: Human-level performance/error (proxy for irreducible error),Train-perf,Valid-perf,Test-perf,Deployment-perf
+
+High bias problem: 
+
+1. Increase flexibility of the model(use more features, introduce non-linearities, complex kernels, reduce regularization
+
+High Variance problem:
+
+1. Decrease flexibility, Add more data
+
+How to know if my Data is enough ?
+
+Plot between fraction of data vs Validation error.
+
+1. Gap is low and both the values are far off from desired limit => High bias (more data likely not help)
+   
+2 . Gap is high and they don't look flattened, and valid error is higher than train => get more data.
 
 # ML Algorithms(classical)
 
