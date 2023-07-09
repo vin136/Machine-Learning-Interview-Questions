@@ -87,7 +87,15 @@ In the squared error setting it decomposes nicely into (bias^2 + variance + erro
 
 Try your best to identify the cause of missingness
 
-MC
+MCAR => missingness has no patter
+MAR => missingness is a function of other observed variables. (eg: age is missing ,but maybe women(gender) are likely to do so)
+MNAR => missingness is due to the value itself. eg: not disclosing income, (maybe people with higher income don't disclose it)
+
+`sol`
+
+- Drop or Impute, generally if impute, add an extra column for missingness. And use swiss army knife and look at validation metrics.
+- Take bootstrap samples and study the impact of imputation on the results.
+
 
 
 **Diagnostics**
