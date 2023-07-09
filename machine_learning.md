@@ -1,3 +1,17 @@
+# Basic facts/defs
+
+1. Entropy = Sigma(p.log(1/p))
+
+2. Crossentropy(p,q) = Sigma(p.log(1/q))
+   
+meaning: expected number of bits needed to compress some data samples drawn from distribution p using a code based on distribution q.
+
+3. KL(always greater than equal to 0)(p,q): sigma(p log(p/q))
+   Minimum when p=q.
+   kl = cross(p,q) - entropy(p)
+   meaning: extra bits needed when you are using wrong dist. to encode.
+   
+
 # Metrics
 
 
