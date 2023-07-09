@@ -311,4 +311,64 @@ Revise [1](https://jupyter.cs.rutgers.edu/user/vk405/lab/tree/Projects/ML-review
 
 When rounded up, just ignore the unnecessary samples. (rejection sampling.)
 
+# Mathematical foundations (optimization,stats,prob,linear-algebra)
+
+
+`Notes`: mostly taken from cowan's notes.
+
+P-value: Under null, it's the probability that you can observe data as or more extreme than the observed data.
+
+Confidence interval: It's a random interval. If we repeat the experiment multiple times, it tells the fraction of times true parameters falls within the designated interval.
+
+Significance value: The significance level of a hypothesis test is the largest value 𝛼 that we find acceptable for the probability for a type I error.
+
+Type 1:  P(Reject H0 | H0 true)(false positive)
+
+Type 2: P(Do not reject H0 |H1 true)(false negative) (beta)
+Power = 1- beta ( P(reject H0 | H1 true))
+
+Multiple hypothesis testing: a lot of approaches, simple is Bonferroni (controls family-wise error rate). To have overall alpha, divide it by `m` for each. Very loose (relies on union bound, P(a b c) <= P(a)+p(b)+p(c)).
+
+## Hypothesis testing
+
+**Continuous variables, two samples**
+
+Permutation test: **adv** (can be based on any test statistic(robust)=> median ) 
+
+Assumption: Two populations have same dist when null is true(as we are pooling) but it's robust to this(except two have diff spread and vastly diff sample sizes)
+
+```
+Poolthem + nvalues. repeat
+Draw a resample of size m without replacement.
+Use the remaining n observations for the other sample.
+Calculate the difference in means or another statistic that compares samples.
+until we have enough samples.
+Calculate the P-value as the fraction of times the random statistics exceed the original statistic. Multiply by 2 for a two-sided test.
+```
+
+We can also use the **z or t-test**, and it can be exact or approximate depending on the original distribution.
+
+**Matched pair testing**
+
+can pool but can be swapped. Eg: say is there any difference(avg) between the divers lapse times in final and semifinal's.  
+
+Approach: for each diver swap their times, instead of combing all.
+
+**Contingency tables/categorical data: Chi-squared test.**
+
+chi-sq-test-statistic = sigma( (obs-true)^2/true).
+
+Under null it's supposed to have chi-squ dist but we can also do permutation and get empirical distribution and use that for hypothesis testing.
+
+- Goodness of fit: Test if some data comes from a specific(say exponential distribution).
+- Every time we have observed vs true(under null we can get expected proportions) between categorical data
+  
+
+**Sampling distribution**
+
+What's the distribution of test-statistic under null?
+
+`App:` Bootstrap (used to estimate the variance).
+
+
 
