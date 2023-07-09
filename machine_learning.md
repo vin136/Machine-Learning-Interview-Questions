@@ -284,6 +284,31 @@ Revise [1](https://jupyter.cs.rutgers.edu/user/vk405/lab/tree/Projects/ML-review
 
 
 
+# Probability common questions
 
+1. Simulate fair coin from biased one (`p`)
+
+   Simple approach:
+   Toss twice. IF HT => HEAD, TH=> TAIL, DISCARD HH,TT.
+   
+   But sample efficiency will be very low, if p is extreme like 0.9.
+
+   `Better approach`:
+
+   <img width="400" alt="Screen Shot 2023-07-09 at 9 13 26 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/d2e98144-fda9-4567-9b60-744347e954d0">
+
+2. Simulate random sampling from N numbers with a coin(it can be biased).
+
+   - We need atleast `N` events, implying at least (log N) tosses. Now all these tosses have equal probability
+   - If the coin is biased, simulate fair coin out of it.
+  
+3. Simulate Biased coin(p) using fair coin.
+
+   - Find N, s.t p = 1/N
+   - Now find #tosses needed to have atleast N outcomes and assign one of the outcome to be biased head, else tail.
+     
+<img width="405" alt="Screen Shot 2023-07-09 at 9 17 53 AM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/1d7e6736-541b-4b78-9031-86e9ee655c5c">
+
+When rounded up, just ignore the unnecessary samples. (rejection sampling.)
 
 
