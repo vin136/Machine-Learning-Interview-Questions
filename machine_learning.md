@@ -208,6 +208,13 @@ Plot between fraction of data vs Validation error.
    
 2 . Gap is high and they don't look flattened, and valid error is higher than train => get more data.
 
+**Caliberation vs Discriminative power**
+
+First check if the model is caliberated than look at histogram of predicted probabilities, it should have two perfect peaks. (eg: platt-scaling)
+
+Typically log-loss results in  caliberated models.(not always though)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
 # ML Algorithms(classical)
 
 Classification
