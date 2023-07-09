@@ -92,6 +92,10 @@ cpu-bound (only multiprocessing can help)
 
 ## Niveshi
 
+**Summary of work done at niveshi**
+
+Permutation testing, add weights that multiply each feature in first layer(init = 1) and + put l1 norm + variance loss(force weights to be varied), progressively remove those that are close to zero and retrain.
+
 Problems Solved
 
 Started from a scratch pad. No code.
