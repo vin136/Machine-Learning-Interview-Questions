@@ -45,8 +45,31 @@ But it's best to calculate metrics per class and set thresholds.
    - Framing as multi-task learning => less overfitting + rich output information. eg: instead of just predicting if a user clicks on  a movie or not predict watch-time etc.
    
 
+**How to handle lack of labels ?**
 
-**1. How to deal with class imbalance ?**
+
+1. Weak supervision : heuristic rules to label. eg: NLP sentiment : `if get rich fast` => spam. Encoding  domain expertise. Even if giving for hand-labeler, better to programmatize it.
+
+Success stories : for radiologist chest x-ray. worked almost as well. eg: Snorkel
+
+2. semi-supervised methods:
+
+`self-training`: start with the labels you have and get predictions on others, take the most confident ones and train on them.
+
+3. Transfer learning.: unsupervised pretraining.
+
+4. Active learning: what data-points i should label that will give me most bang for the buck.
+
+Active learning approaches:
+
+`Get some uncertainty estimate: disagreement btw different clfs`
+1. 100 train samples with labels, rest 900 unlabeled. Train on 100 samples and based on confidence of the predictions in the rest, decide to label them. This assumes the model is well-caliberated.
+2. disagreement btw different classifers
+
+
+
+
+**How to deal with class imbalance ?**
 
 `Why it's Bad ?`
 
