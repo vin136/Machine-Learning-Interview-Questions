@@ -156,8 +156,76 @@ Now split data onto train,valid,test ? is this good ?
 
 ## Energylab internship.
 
+Incorporated Skyimages for the forecasting of solar-irradiance. Short-horizon = 10.
+
+How ?
+
+Two-stage:
+Built a custom CNN+LSTM model (late fusion) that take both the past few skyimages(cloud cover) and sensor data.
+
+Noted a peculiar problem: Temporal bias=> predictions are just shifted versions of past. Over short horizon this gives less MSE and model doesn't have to learn any patterns.
+
+**Contribution**
+
+Quantify and reduce temporal bias. How to quantify => created a metric. Take predicted and true signals. now create a new signal = by adding noise on the true signal.
+
+now calculate spearman rank correlation btw (noise,true)=> `reflects the value when there is no temporal bias` and pred,true.
+
+Fitted an SVR on the residuals with some custom features via feature engineering.(note all this is done on validation data as we already used train-data).
+
+-------------------------------------
+
+
+
 
 ## Recommender Systems
+
+Modeling:
+Memory based methods.(no weights are learned)
+
+Similarity based on User-item matrix.
+
+similarity => jaccard(intersection over union),cosine(takes scale into account), pearson-similarity(normalize,some users give high ratings naturally)
+
+User-user or item-item. => to find a recommendation for a user, find similar users and then take their ratings for this item and calculate the score for each unseen item and return the one with the highest score.
+
+item-item pros: 
+
+- Being item-centric, it overcomes
+the issue with sparsity in user data.
+
+- It also
+overcomes challenges with newer and less-frequent users with
+sparse history, because the similar items list focuses on the
+user’s history as opposed to the history of other users
+
+
+NCR: neural collaborative reasoning
+
+1. Recsys can be seen as reasoning task, if user likes a,b,c=> does it imply he'll like d.(propositional logic)
+
+<img width="582" alt="Screen Shot 2023-07-09 at 4 09 39 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/2fb5ed1b-0305-43fb-82fe-6991936be9a2">
+
+2. Use neural nets to encode logic gates. Like `Not`.
+
+Regularize not(not(x) = x, thus similarity (consine) should be low. similarly for commutative and associative properties.
+
+3. Loss => constrastive loss with negative sampling. We have fixed vectors `T` and `F` and for each positive, we take another negative and force them to be as far away as possible.
+
+<img width="611" alt="Screen Shot 2023-07-09 at 4 14 43 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/e985f081-6105-4e62-96ef-e477add0a7f1">
+
+4. Detail: max training history is 5. Metrics (NDCG@N, Hit@N, precision@N and recall@N),ndcg takes position into account and works even if we have relevance scores. Here we just took rating values and thresholded into positive and negative classes.
+   
+   <img width="400" alt="Screen Shot 2023-07-09 at 3 47 26 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/2cb49cf8-584e-4c57-8af0-163a00e38419">
+
+6. StrongBase line : NMF. = user bias + item bias + (user.item), embeddings are learned.
+
+   **Big contribution**: Counter factual analysis, can tell the user why we recommended the item.
+
+   How ? negate each interaction(positive to negative) and see the effect (can be done at test time) on say hit@5. The one with highest impact is most important, thus can tell the user => we recommended this movie because you've liked this in the past. 
+
+----------------------------------------------
+
 
 ## Project 1: Wave2vec2.0
 
