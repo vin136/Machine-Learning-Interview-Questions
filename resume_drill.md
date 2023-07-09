@@ -233,7 +233,7 @@ Regularize not(not(x) = x, thus similarity (consine) should be low. similarly fo
 
 ## Project 1: Wave2vec2.0
 
-- ASR model trained by self-supervision.
+- ASR model trained by self-supervision. (they used quantization with some details to identify speech vocabulary). Loss is contrastive loss => minimize (softmax) over 1 true label and `k` sampled possibilities. Then they finetuned by putting a linear layer that outputs vocabulary.
 
 Knowledge distillation : KL between teacher and student. inspiration from distil bert(alternative initialization),reduce number of transformer layers and initialize alternatively. And force the last layer activations to be same(l2).
 
