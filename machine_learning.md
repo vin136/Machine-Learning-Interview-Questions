@@ -11,7 +11,22 @@ meaning: expected number of bits needed to compress some data samples drawn from
    kl = cross(p,q) - entropy(p)
    meaning: extra bits needed when you are using wrong dist. to encode.
    
+# Deep learning
 
+**Computational issuues**
+Good initialization.
+
+Vanishig gradient problem sols: Residual connections, better activations(from sigmoid(saturation) to Relu,Elu(to avoid dead-neuron) problem.
+
+Exploding gradient problem : gradient clipping, keep gradient close to zero
+   
+**statistical issues**
+
+Overfitting
+
+1. Early stopping
+2. Weight-decay
+3. Drop-out.
 # Metrics
 
 
