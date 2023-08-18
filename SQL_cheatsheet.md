@@ -1,6 +1,71 @@
-# Where clause
 
-# Window Functions
+#SQL INTRO(educative)
+
+**Key Commands**
+VIEWS => virtual tables that simplify data-querying. Typically we can update the table via updating the view but we can enforce security features too.
+```
+CREATE [OR REPLACE] VIEW view_name AS
+
+select_statement
+
+WITH CHECK OPTION;
+```
+(This clause forbids the user to insert or update rows that are not visible through the view.)
+
+
+
+Stored Procedures => Procedures are a simple way to save queries for later access.
+
+Why ? (1. caching, if called again, we use the cached results, 2. are like functions, 3. can be used for security by giving users access to certain procedures without giving access to the tables.)
+
+cons (hard to debug and may overuse memory and CPU)
+
+
+
+
+
+SHOW CREATE DATABASE mysql;
+
+
+`Create table`
+CREATE (TABLE/DATABASE)
+
+`Insert\populate`
+
+```
+INSERT INTO table (col1, col2 … coln)
+
+VALUES (val1, val2, … valn);
+```
+
+
+`Delete a row`
+
+```
+DELETE FROM Actors WHERE Gender="Male";
+```
+
+`Update`
+
+```
+UPDATE Actors SET NetWorthInMillions=5 ORDER BY FirstName LIMIT 3;
+```
+
+
+
+ALTER => change a column type, add a column
+
+DROP => table or database.
+
+DESCRIBE => get the schema.
+
+`using python to insert values into a table`
+Insert into <table_name> VALUES <format>,executed_many
+
+
+## Where clause
+
+## Window Functions
 
 ## OVER:
 
