@@ -84,3 +84,8 @@ Some notes for devops.
 Sampling theory(http://home.iitk.ac.in/~shalab/course1.htm)
 Design of exps(https://home.iitk.ac.in/~shalab/spanova.htm)
 
+## Extra: Useful papers
+
+
+
+
