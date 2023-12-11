@@ -91,7 +91,7 @@ Design of exps(https://home.iitk.ac.in/~shalab/spanova.htm)
 2. [ML Courses by Soled Galil, Udemy](https://www.udemy.com/course/feature-selection-for-machine-learning/)
 3. [Xgboost paper explanation](https://www.youtube.com/watch?v=OtD8wVaFm6E&list=PLblh5JKOoLULU0irPgs1SnKO6wqVjKUsQ&index=1)
 4. [Clustering methods](https://www.coursera.org/learn/ml-clustering-and-retrieval/home/week/4)
-
+5. [Trees](https://www.youtube.com/watch?v=DtX1hN0FRfk&list=PL8P_Z6C4GcuXrj9crYtU_XaYh3Jac4x0p)
 
 
 
