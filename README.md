@@ -89,6 +89,7 @@ Design of exps(https://home.iitk.ac.in/~shalab/spanova.htm)
 `general`
 1. [test for normality](https://towardsdatascience.com/6-ways-to-test-for-a-normal-distribution-which-one-to-use-9dcf47d8fa93)
 2. [ML Courses by Soled Galil, Udemy](https://www.udemy.com/course/feature-selection-for-machine-learning/)
+3. [Xgboost paper explanation](https://www.youtube.com/watch?v=OtD8wVaFm6E&list=PLblh5JKOoLULU0irPgs1SnKO6wqVjKUsQ&index=1)
 
 
 
