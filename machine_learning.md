@@ -228,6 +228,15 @@ High bias problem:
 High Variance problem:
 
 1. Decrease flexibility, Add more data
+Generally getting more data doesn't helf fight bias. eg: if training perf is worse than human perf, then model doesn't even fit your training data well.
+
+
+What if the gap btw valid and test is high ?
+
+Get more high quality/realistic data, human labeling.
+Upweight samples in train set that are close to test set.
+data transformations Eg: if test set is mostly black and white and train is color, apply some filters.
+
 
 How to know if my Data is enough ?
 
@@ -236,6 +245,8 @@ Plot between fraction of data vs Validation error.
 1. Gap is low and both the values are far off from desired limit => High bias (more data likely not help)
    
 2 . Gap is high and they don't look flattened, and valid error is higher than train => get more data.
+
+
 
 **Caliberation vs Discriminative power**
 
