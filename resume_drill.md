@@ -351,6 +351,8 @@ BERT -> ENCODER ONLY, masked language madeling.
 
 When finetuning , finetune the embedding of [CLS] token
 
+DALLE - simple approach where you have a sequence of text followed by corresponding sequence of image tokens(divide row wise chunks) and train on large dataset, now we have image to text generation.
+
 ASK:
 
 1. what's the team-size you are aiming now
