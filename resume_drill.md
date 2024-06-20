@@ -299,6 +299,31 @@ We want a model that connects images and text really well. Data is easy to get,p
 - Predicting the text from photo in language modeling isn't a great idea
 - use any image and text encoder. Now we have a constrastive objective.(softmax along the row and column)
 
+The loss function is for each row - normalize the values and use cross-entropy loss, and now do the same for that column, and avg it.
+
+```
+# image_encoder - ResNet or Vision Transformer
+# text_encoder - CBOW or Text Transformer
+# I[n, h, w, c] - minibatch of aligned images
+# T[n, l] - minibatch of aligned texts
+# W_i[d_i, d_e] - learned proj of image to embed
+# W_t[d_t, d_e] - learned proj of text to embed
+# t - learned temperature parameter
+# extract feature representations of each modality
+I_f = image_encoder(I) #[n, d_i]
+T_f = text_encoder(T) #[n, d_t]
+# joint multimodal embedding [n, d_e]
+I_e = l2_normalize(np.dot(I_f, W_i), axis=1)
+T_e = l2_normalize(np.dot(T_f, W_t), axis=1)
+# scaled pairwise cosine similarities [n, n]
+logits = np.dot(I_e, T_e.T) * np.exp(t)
+# symmetric loss function
+labels = np.arange(n)
+loss_i = cross_entropy_loss(logits, labels, axis=0)
+loss_t = cross_entropy_loss(logits, labels, axis=1)
+loss = (loss_i + loss_t)/2
+Figure 3. Numpy-like pseudocode for the core of an implementation of CLIP.
+```
 Needs large enough minibatch.
 
 <img width="500" alt="Screen Shot 2023-06-19 at 1 13 57 PM" src="https://github.com/vin136/Machine-Learning-Interview-Questions/assets/21222766/ea1eba3b-745f-45fc-97f0-07a3750a6051">
